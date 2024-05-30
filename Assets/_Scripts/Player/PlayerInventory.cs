@@ -6,8 +6,8 @@ namespace _Scripts.Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        public Dictionary<KeyCode, IInventoryItem> items = new();
-        public IInventoryItem currentHandedItem;
+        public Dictionary<KeyCode, InventoryItemBase> items = new();
+        public InventoryItemBase currentHandedItem;
 
         private void Start()
         {
@@ -20,25 +20,36 @@ namespace _Scripts.Player
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1)) TakeHand(KeyCode.Keypad1);
-            if (Input.GetKeyDown(KeyCode.Keypad2)) TakeHand(KeyCode.Keypad2);
-            if (Input.GetKeyDown(KeyCode.Keypad3)) TakeHand(KeyCode.Keypad3);
-            if (Input.GetKeyDown(KeyCode.Keypad4)) TakeHand(KeyCode.Keypad4);
-            if (Input.GetKeyDown(KeyCode.Keypad5)) TakeHand(KeyCode.Keypad5);
+            if (Input.GetKeyDown(KeyCode.Keypad1)) TryTakeHand(KeyCode.Keypad1);
+            else if (Input.GetKeyDown(KeyCode.Keypad2)) TryTakeHand(KeyCode.Keypad2);
+            else if (Input.GetKeyDown(KeyCode.Keypad3)) TryTakeHand(KeyCode.Keypad3);
+            else if (Input.GetKeyDown(KeyCode.Keypad4)) TryTakeHand(KeyCode.Keypad4);
+            else if (Input.GetKeyDown(KeyCode.Keypad5)) TryTakeHand(KeyCode.Keypad5);
         }
 
-        private void TakeHand(KeyCode key)
+        private void TryTakeHand(KeyCode key)
         {
-            if(currentHandedItem == items[key]) return;
+            if (currentHandedItem == items[key])
+            {
+                Debug.Log("you hold equipment already");
+                return;
+            }
             
-            currentHandedItem.OnDownFromHand();
+            currentHandedItem?.OnDownFromHand();
+            currentHandedItem?.gameObject.SetActive(false);
             currentHandedItem = items[key];
+            currentHandedItem.gameObject.SetActive(true);
             currentHandedItem.OnTakeInHand();
         }
-
-        public bool TryPickUp(IInventoryItem _newItem)
+        
+        public bool IsInventoryAvailable ()
         {
-            foreach (KeyValuePair<KeyCode, IInventoryItem> _item in items)
+            return PickUp(null);
+        }
+
+        public bool PickUp(InventoryItemBase _newItem)
+        {
+            foreach (KeyValuePair<KeyCode, InventoryItemBase> _item in items)
             {
                 if (_item.Value == null)
                 {

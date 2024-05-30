@@ -7,6 +7,7 @@ namespace _Scripts.Player
     public class ItemCollector : MonoBehaviour
     {
         public PlayerInventory PlayerInventory;
+        public PlayerInventory HealthBar;
 
         private void OnCollisionEnter(Collision other)
         {
