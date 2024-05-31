@@ -1,4 +1,4 @@
-﻿namespace _Scripts.Weaponds.Attacments._Base
+﻿namespace _Scripts.Items.InventoryItems
 {
     public abstract class AttachmentBase
     {

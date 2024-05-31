@@ -1,15 +1,14 @@
 ﻿using _Scripts.Player;
-using UnityEngine;
 
-namespace _Scripts.Items.Base
+
+namespace _Scripts.Items.CollectableItems
 {
     public abstract class CollactableItemBase : ItemBase, ICollectable
     {
-        public abstract void TryCollect(ItemCollector itemCollector);
+        public abstract void TryCollect(PlayerItemCollector playerItemCollector);
         
         public virtual void OnCollect()
         {
-            Debug.Log("Base Class On Collect");
             gameObject.SetActive(false); //todo object pooling
         }
     }

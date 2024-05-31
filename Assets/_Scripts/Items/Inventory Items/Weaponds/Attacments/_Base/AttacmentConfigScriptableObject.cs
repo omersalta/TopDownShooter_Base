@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Scripts.Weaponds.Attacments._Base
+namespace _Scripts.Items.InventoryItems
 {
     
     [CreateAssetMenu(fileName = "Attacment Config", menuName = "Guns/Attacment Configuration")]
@@ -11,16 +10,16 @@ namespace _Scripts.Weaponds.Attacments._Base
         public String attachmentName; //how looks shoots on game
         public AttachmentType type; //how looks gun on game (in player hand)
         
-        [Range(1,25)]
-        public int damage;
-        [Range(0,100)]
-        public int armorPenetrationRate;
-        [Range(20,500)]
-        public int fireRate;
-        [Range(20f,300f)]
-        public float fireRange;
-        [Range(0,100f)]
-        public float slightOfHandTimePercentage;
+        [Range(-99.9f,200f)]
+        public float damagePercentage;
+        [Range(-99.9f,200f)]
+        public float armorPenetrationRatePercentage;
+        [Range(-99.9f,100f)]
+        public float fireRatePercentage;
+        [Range(-99.9f,300f)]
+        public float fireRangePercentage;
+        [Range(-99.9f,200f)]
+        public float slightOfHandTimePercentage; //if this value is 100, it takes double time
     }
 
 

@@ -1,10 +1,10 @@
 ﻿using _Scripts.Player;
 
-namespace _Scripts.Items.Base
+namespace _Scripts.Items.CollectableItems
 {
     public interface ICollectable
     {
-        void TryCollect(ItemCollector itemCollector);
+        void TryCollect(PlayerItemCollector playerItemCollector);
 
         void OnCollect();
 

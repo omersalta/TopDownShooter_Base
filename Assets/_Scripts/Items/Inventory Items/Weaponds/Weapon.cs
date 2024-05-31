@@ -1,25 +1,19 @@
 ﻿using UnityEngine;
 
-namespace _Scripts.Weaponds
+namespace _Scripts.Items.InventoryItems
 {
     public class Weapon : WeaponBase
     {
-        
-        public  Weapon(Sprite inventorySprite, WeaponConfigScriptableObject weaponConfig)
+        public void Initialize(WeaponConfigScriptableObject weaponConfig)
         {
             _weaponConfig = weaponConfig;
-            _inventorySprite = inventorySprite;
+            _inventorySprite = _weaponConfig.inventorySprite;
         }
         
         public override void OnTakeInHand()
         {
             lastShootTime = Time.time + _weaponConfig.slightOfHandTime ;
-            Debug.Log("You Take "+ _weaponConfig.weaponName +" to hand");
-        }
-
-        public override void OnDownFromHand()
-        {
-            Debug.Log("You Down "+ _weaponConfig.weaponName +" from hand");
+            base.OnTakeInHand();
         }
 
         public override void RaycastAction(Collider target)

@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace _Scripts.Items.Base
+namespace _Scripts.Items.CollectableItems
 {
     public abstract class ItemBase : MonoBehaviour
     {

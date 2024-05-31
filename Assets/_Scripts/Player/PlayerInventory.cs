@@ -1,50 +1,48 @@
 ﻿using System.Collections.Generic;
-using _Scripts.Items.Base;
+using _Scripts.Items.InventoryItems;
 using UnityEngine;
 
 namespace _Scripts.Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        public Dictionary<KeyCode, InventoryItemBase> items = new();
         public InventoryItemBase currentHandedItem;
+        public static readonly KeyCode[] _inventoryKeys = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
+        private Dictionary<KeyCode, InventoryItemBase> items = new();
 
         private void Start()
         {
-            items.Add(KeyCode.Keypad1,null);
-            items.Add(KeyCode.Keypad2,null);
-            items.Add(KeyCode.Keypad3,null);
-            items.Add(KeyCode.Keypad4,null);
-            items.Add(KeyCode.Keypad5,null);
+            foreach (KeyCode _key in _inventoryKeys)
+            {
+                items.Add(_key,null);
+            }
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Keypad1)) TryTakeHand(KeyCode.Keypad1);
-            else if (Input.GetKeyDown(KeyCode.Keypad2)) TryTakeHand(KeyCode.Keypad2);
-            else if (Input.GetKeyDown(KeyCode.Keypad3)) TryTakeHand(KeyCode.Keypad3);
-            else if (Input.GetKeyDown(KeyCode.Keypad4)) TryTakeHand(KeyCode.Keypad4);
-            else if (Input.GetKeyDown(KeyCode.Keypad5)) TryTakeHand(KeyCode.Keypad5);
+            foreach (var VARIABLE in _inventoryKeys)
+            {
+                if(Input.GetKeyDown(VARIABLE)) TryTakeHand(VARIABLE);
+            }
+            
         }
-
+        
         private void TryTakeHand(KeyCode key)
         {
             if (currentHandedItem == items[key])
             {
-                Debug.Log("you hold equipment already");
+                Debug.Log("there is no equipment or you already hold the equipment");
                 return;
             }
             
             currentHandedItem?.OnDownFromHand();
-            currentHandedItem?.gameObject.SetActive(false);
             currentHandedItem = items[key];
-            currentHandedItem.gameObject.SetActive(true);
-            currentHandedItem.OnTakeInHand();
+            currentHandedItem?.OnTakeInHand();
         }
         
         public bool IsInventoryAvailable ()
         {
-            return PickUp(null);
+            return items.ContainsValue(null);
         }
 
         public bool PickUp(InventoryItemBase _newItem)
@@ -54,6 +52,7 @@ namespace _Scripts.Player
                 if (_item.Value == null)
                 {
                     items[_item.Key] = _newItem;
+                    TryTakeHand(_item.Key);
                     return true;
                 }
             }

@@ -20,7 +20,7 @@ namespace _Scripts.Player
 
         private void Update()
         {
-            _rigidbody.velocity = (new Vector3(_input.SpeedX, 0, _input.SpeedY) * 25);
+            _rigidbody.velocity = (new Vector3(_input.SpeedX, 0, _input.SpeedY) * 20);
             Aim();
         }
         

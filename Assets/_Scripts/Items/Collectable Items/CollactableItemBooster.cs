@@ -1,11 +1,10 @@
-﻿using _Scripts.Items.Base;
-using _Scripts.Player;
+﻿using _Scripts.Player;
 
-namespace _Scripts.Items
+namespace _Scripts.Items.CollectableItems
 {
     public class CollactableItemBooster : CollactableItemBase
     {
-        public override void TryCollect(ItemCollector itemCollector)
+        public override void TryCollect(PlayerItemCollector playerItemCollector)
         {
             throw new System.NotImplementedException();
         }
