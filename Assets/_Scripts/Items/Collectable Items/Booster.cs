@@ -2,7 +2,7 @@
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class CollactableItemBooster : CollactableItemBase
+    public class Booster : CollactableItemBase
     {
         public override void TryCollect(PlayerItemCollector playerItemCollector)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class CollactableItemWeapon : CollactableItemBase
+    public class Weapon : CollactableItemBase
     {
         [SerializeField] private WeaponConfigScriptableObject _weaponConfig;
         
@@ -14,7 +14,7 @@ namespace _Scripts.Items.CollectableItems
             {
                 GameObject _weapondPrefab = Instantiate(_weaponConfig.weaponPrefab, playerItemCollector.PlayerInventory.transform);
                 _weapondPrefab.name = _weaponConfig.weaponName + " Clone";
-                Weapon _weapon = _weapondPrefab.AddComponent<Weapon>();
+                InventoryItems.Weapon _weapon = _weapondPrefab.AddComponent<InventoryItems.Weapon>();
                 _weapon.Initialize(_weaponConfig);
                 playerItemCollector.PlayerInventory.PickUp(_weapon);
                 

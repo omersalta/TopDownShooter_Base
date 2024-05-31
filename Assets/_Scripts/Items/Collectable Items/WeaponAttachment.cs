@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class CollactableItemWeaponAttachment : CollactableItemBase
+    public class WeaponAttachment : CollactableItemBase
     {
         [SerializeField] private AttacmentConfigScriptableObject _attacmentConfig;
         public override void TryCollect(PlayerItemCollector playerItemCollector)

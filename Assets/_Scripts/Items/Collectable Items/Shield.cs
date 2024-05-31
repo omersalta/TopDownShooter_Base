@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class CollectableItemShield : CollactableItemBase
+    public class Shield : CollactableItemBase
     {
         [SerializeField] private GameObject playerHandPrefab;
         public override void TryCollect(PlayerItemCollector playerItemCollector)

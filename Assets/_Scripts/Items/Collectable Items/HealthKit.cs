@@ -2,7 +2,7 @@
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class CollactableItemHealthKit : CollactableItemBase
+    public class HealthKit : CollactableItemBase
     {
         public override void TryCollect(PlayerItemCollector playerItemCollector)
         {
