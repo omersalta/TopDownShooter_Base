@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3751300291443975990}
   - component: {fileID: 8053917589492142577}
   - component: {fileID: 391788502990602717}
-  - component: {fileID: 1643205302648185141}
   - component: {fileID: 4846870886793981200}
+  - component: {fileID: -5919493916834438322}
   m_Layer: 0
   m_Name: Item_Rifle_Outo
   m_TagString: Untagged
@@ -85,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1643205302648185141
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3519380372418690484}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -695774298109068085, guid: a5f56547380d3e6448e877c01e64c479, type: 3}
 --- !u!114 &4846870886793981200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,3 +100,24 @@ MonoBehaviour:
   type: 0
   name: M4A4
   _weaponConfig: {fileID: 11400000, guid: ca9b9ba4fffb3a34b9085e08b1517a09, type: 2}
+--- !u!135 &-5919493916834438322
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3519380372418690484}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0.097256735, y: -0.05297709, z: -0.00017293362}
