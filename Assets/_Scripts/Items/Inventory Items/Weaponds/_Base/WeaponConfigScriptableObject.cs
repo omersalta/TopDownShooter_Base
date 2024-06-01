@@ -10,7 +10,7 @@ namespace _Scripts.Items.InventoryItems
         public List<AttachmentPair> currentMountedAttachments; //
         
         public GameObject weaponPrefab; //how looks gun on player hand
-        public GameObject projectilePrefab; //how looks shoots on game
+        public ProjectileConfigScriptableObject ProjectileConfig; //how looks shoots on game
         public Sprite inventorySprite; //how looks shoots on game
         
         [Range(1,100)]
@@ -23,6 +23,8 @@ namespace _Scripts.Items.InventoryItems
         public float fireRange; //missile distance
         [Range(0.1f,2f)]
         public float slightOfHandTime; //the waiting time before you can use it when you pick it up
+        
+        
         
     }
 

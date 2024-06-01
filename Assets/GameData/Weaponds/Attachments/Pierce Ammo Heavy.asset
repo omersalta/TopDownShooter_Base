@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54481cb7c6ba4c0b81d278ab4fb99e75, type: 3}
-  m_Name: Pierce Ammo 7.62
+  m_Name: Pierce Ammo Heavy
   m_EditorClassIdentifier: 
   attachmentName: 7.62 Armor Piercing Rounds
   type: 6

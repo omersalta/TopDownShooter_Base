@@ -5,10 +5,17 @@ namespace _Scripts.Items.InventoryItems
 {
     public abstract class WeaponBase : InventoryItemBase
     {
+        protected WeaponConfigScriptableObject _defaultWeaponConfig;
         protected WeaponConfigScriptableObject _weaponConfig;
         protected float lastShootTime;
         
-        public abstract void RaycastAction(Collider target);
+        public virtual void Initialize(WeaponConfigScriptableObject weaponConfig)
+        {
+            _defaultWeaponConfig = weaponConfig;
+            _weaponConfig = weaponConfig;
+            _weaponConfig.currentMountedAttachments.ForEach(x => AddAttachment(x.attacmentConfig));
+            _inventorySprite = _weaponConfig.inventorySprite;
+        }
         public virtual bool isAvailableForAttachment(AttachmentType _type){
             bool contains = _weaponConfig.currentMountedAttachments.Any(_pair => _pair.type == _type);
             return !contains;

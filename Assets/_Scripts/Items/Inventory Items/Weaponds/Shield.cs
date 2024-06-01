@@ -8,10 +8,6 @@ namespace _Scripts.Items.InventoryItems
         {
             throw new System.NotImplementedException();
         }
-
-        public override void RaycastAction(Collider target)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }
