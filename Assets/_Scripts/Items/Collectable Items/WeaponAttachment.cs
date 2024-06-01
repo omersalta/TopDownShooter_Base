@@ -4,12 +4,16 @@ using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class WeaponAttachment : CollactableItemBase
+    public class WeaponAttachment : CollactableBase
     {
         [SerializeField] private AttacmentConfigScriptableObject _attacmentConfig;
-        public override void TryCollect(PlayerItemCollector playerItemCollector)
+        
+        public override void TryCollect(CollectorBase _collector)
         {
-            WeaponBase holdedWeapon = playerItemCollector.PlayerInventory.currentHandedItem.GetComponent<WeaponBase>();
+            PlayerCollector _playerCollector = _collector.GetComponent<PlayerCollector>();
+            if(_playerCollector == null) return;
+            
+            WeaponBase holdedWeapon = _playerCollector.PlayerInventory.currentHoldedItem.GetComponent<WeaponBase>();
             
             if (holdedWeapon == null) return;
             if(!holdedWeapon.isAvailableForAttachment(_attacmentConfig.type)) return;

@@ -4,7 +4,7 @@ namespace _Scripts.Items.CollectableItems
 {
     public interface ICollectable
     {
-        void TryCollect(PlayerItemCollector playerItemCollector);
+        void TryCollect(CollectorBase playerCollector);
 
         void OnCollect();
 

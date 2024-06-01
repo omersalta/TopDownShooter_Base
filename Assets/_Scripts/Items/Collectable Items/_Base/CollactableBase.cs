@@ -3,9 +3,9 @@
 
 namespace _Scripts.Items.CollectableItems
 {
-    public abstract class CollactableItemBase : ItemBase, ICollectable
+    public abstract class CollactableBase : ItemBase
     {
-        public abstract void TryCollect(PlayerItemCollector playerItemCollector);
+        public abstract void TryCollect(CollectorBase _collector);
         
         public virtual void OnCollect()
         {

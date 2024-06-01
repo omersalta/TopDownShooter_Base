@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class Shield : CollactableItemBase
+    public class Shield : CollactableBase
     {
         [SerializeField] private GameObject playerHandPrefab;
-        public override void TryCollect(PlayerItemCollector playerItemCollector)
+        public override void TryCollect(CollectorBase _collector)
         {
             throw new System.NotImplementedException();
         }

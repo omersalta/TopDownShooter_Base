@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
   m_Name: M4A1_Outo
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: Rifle Outo
   currentMountedAttachments: []
   weaponPrefab: {fileID: 3422012258672029692, guid: fe35cce475e40d5429284b6f753a0b83,
     type: 3}
-  projectilePrefab: {fileID: 3668261424305038712, guid: 487321f6bf2dc36419f9e913d5b512ba,
-    type: 3}
+  ProjectileConfig: {fileID: 0}
   inventorySprite: {fileID: 0}
   damage: 24
   armorPenetrationRate: 75

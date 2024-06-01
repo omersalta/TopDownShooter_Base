@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-
-namespace _Scripts.Items.InventoryItems
+﻿namespace _Scripts.Items.InventoryItems
 {
-    public class Shield : WeaponBase
+    public class Knife : WeaponBase
     {
         public override void Use()
         {
@@ -13,11 +11,10 @@ namespace _Scripts.Items.InventoryItems
         {
             throw new System.NotImplementedException();
         }
-
+        
         public override bool isAvailableForAttachment(AttachmentType type)
         {
             return false;
         }
-        
     }
 }

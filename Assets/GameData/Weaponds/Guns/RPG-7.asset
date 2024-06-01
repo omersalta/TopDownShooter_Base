@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
   m_Name: RPG-7
   m_EditorClassIdentifier: 
-  type: 2
+  weaponName: Rocket Launcher
+  currentMountedAttachments: []
   weaponPrefab: {fileID: 171527776781687000, guid: cff54109a89a7054baed13c5aed127af,
     type: 3}
-  projectilePrefab: {fileID: 2896481456221573796, guid: b95429b880f3fb34cbf7bbf717f5f769,
-    type: 3}
+  ProjectileConfig: {fileID: 0}
+  inventorySprite: {fileID: 0}
   damage: 98
   armorPenetrationRate: 33
   fireRate: 20

@@ -6,7 +6,7 @@ namespace _Scripts.Player
 {
     public class PlayerInventory : MonoBehaviour
     {
-        public InventoryItemBase currentHandedItem;
+        public InventoryItemBase currentHoldedItem;
         public static readonly KeyCode[] _inventoryKeys = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
         private Dictionary<KeyCode, InventoryItemBase> items = new();
 
@@ -29,34 +29,36 @@ namespace _Scripts.Player
         
         private void TryTakeHand(KeyCode key)
         {
-            if (currentHandedItem == items[key])
+            if (currentHoldedItem == items[key])
             {
                 Debug.Log("there is no equipment or you already hold the equipment");
                 return;
             }
             
-            currentHandedItem?.OnDownFromHand();
-            currentHandedItem = items[key];
-            currentHandedItem?.OnTakeInHand();
+            currentHoldedItem?.OnDownFromHand();
+            currentHoldedItem = items[key];
+            currentHoldedItem?.OnTakeInHand();
         }
         
-        public bool IsInventoryAvailable ()
+        public bool IsInventoryAvailable()
         {
             return items.ContainsValue(null);
         }
 
-        public bool PickUp(InventoryItemBase _newItem)
+        public bool PickUp(InventoryItemBase newItem)
         {
             foreach (KeyValuePair<KeyCode, InventoryItemBase> _item in items)
             {
                 if (_item.Value == null)
                 {
-                    items[_item.Key] = _newItem;
-                    TryTakeHand(_item.Key);
+                    items[_item.Key] = newItem;
+                    currentHoldedItem = items[_item.Key];
+                    currentHoldedItem.OnPickUpToHand();
+                    
                     return true;
                 }
             }
-
+            Debug.Log("The item could not picked up");
             return false;
         }
     }

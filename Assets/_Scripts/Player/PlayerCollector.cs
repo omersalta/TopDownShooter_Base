@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace _Scripts.Player
 {
-    public class PlayerItemCollector : MonoBehaviour
+    public class PlayerCollector : CollectorBase
     {
         public PlayerInventory PlayerInventory;
         //public HealthBar;
         
-        private void OnTriggerEnter(Collider other)
+        public override void OnTriggerEnter(Collider other)
         {
             ICollectable collectable = other.gameObject.GetComponent<ICollectable>();
             if (collectable != null)

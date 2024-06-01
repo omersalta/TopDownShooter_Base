@@ -9,7 +9,12 @@ namespace _Scripts.Items.InventoryItems
             lastShootTime = Time.time + _weaponConfig.slightOfHandTime ;
             base.OnTakeInHand();
         }
-        
+
+        public override void OnDropFromHand()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void Use()
         {
             lastShootTime = Time.time;

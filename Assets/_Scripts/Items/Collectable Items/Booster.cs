@@ -2,9 +2,9 @@
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class Booster : CollactableItemBase
+    public class Booster : CollactableBase
     {
-        public override void TryCollect(PlayerItemCollector playerItemCollector)
+        public override void TryCollect(CollectorBase ollector)
         {
             throw new System.NotImplementedException();
         }

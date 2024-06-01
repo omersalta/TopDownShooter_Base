@@ -14,6 +14,11 @@ namespace _Scripts.Items.InventoryItems
             throw new System.NotImplementedException();
         }
 
+        public override void OnDropFromHand()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void OnDownFromHand()
         {
             throw new System.NotImplementedException();
@@ -23,6 +28,7 @@ namespace _Scripts.Items.InventoryItems
         {
             if (_type == AttachmentType.Ammunition || _type == AttachmentType.Magazine ||
                 _type == AttachmentType.Muzzle || _type == AttachmentType.Stock) return false;
+            
             return base.isAvailableForAttachment(_type);
         }
     }

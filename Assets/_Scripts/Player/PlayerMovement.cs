@@ -20,12 +20,13 @@ namespace _Scripts.Player
 
         private void Update()
         {
-            _rigidbody.velocity = (new Vector3(_input.SpeedX, 0, _input.SpeedY) * 20);
+            _rigidbody.velocity = (new Vector3(_input.SpeedX, 0, _input.SpeedY) * 14);
             Aim();
         }
         
         private void Aim()
         {
+            //Code copied from there https://github.com/BarthaSzabolcs/Tutorial-IsometricAiming/blob/main/Assets/Scripts/Simple%20-%20CopyThis/IsometricAiming.cs
             var (success, position) = GetMousePosition();
             if (success)
             {

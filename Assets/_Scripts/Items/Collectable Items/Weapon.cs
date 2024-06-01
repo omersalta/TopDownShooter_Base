@@ -4,23 +4,30 @@ using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
-    public class Weapon : CollactableItemBase
+    public class Weapon : CollactableBase
     {
         [SerializeField] private WeaponConfigScriptableObject _weaponConfig;
         
-        public override void TryCollect(PlayerItemCollector playerItemCollector)
+        public override void TryCollect(CollectorBase _collector)
         {
-            if (playerItemCollector.PlayerInventory.IsInventoryAvailable())
+            PlayerCollector _playerCollector = _collector.GetComponent<PlayerCollector>();
+            if(_playerCollector == null) return;
+            
+            if (_playerCollector.PlayerInventory.IsInventoryAvailable())
             {
-                GameObject _weapondPrefab = Instantiate(_weaponConfig.weaponPrefab, playerItemCollector.PlayerInventory.transform);
+                GameObject _weapondPrefab = Instantiate(_weaponConfig.weaponPrefab, _playerCollector.PlayerInventory.transform);
                 _weapondPrefab.name = _weaponConfig.weaponName + " Clone";
-                InventoryItems.Weapon _weapon = _weapondPrefab.AddComponent<InventoryItems.Weapon>();
-                _weapon.Initialize(_weaponConfig);
-                playerItemCollector.PlayerInventory.PickUp(_weapon);
+                InventoryItems.Weapon weapon = _weapondPrefab.AddComponent<InventoryItems.Weapon>();
+                weapon.Initialize(_weaponConfig,gameObject);
+                _playerCollector.PlayerInventory.PickUp(weapon);
                 
                 OnCollect();
             }
         }
-        
+
+        public void OnCollectt()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

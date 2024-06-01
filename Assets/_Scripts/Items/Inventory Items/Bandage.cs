@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using _Scripts.Items.InventoryItems;
 
-namespace _Scripts.Items.InventoryItems
+namespace _Scripts.Items.Inventory_Items
 {
-    public class Shield : WeaponBase
+    public class Bandage : DropableItemBase
     {
         public override void Use()
         {
@@ -12,11 +12,6 @@ namespace _Scripts.Items.InventoryItems
         public override void OnDropFromHand()
         {
             throw new System.NotImplementedException();
-        }
-
-        public override bool isAvailableForAttachment(AttachmentType type)
-        {
-            return false;
         }
         
     }
