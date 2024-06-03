@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
-  m_Name: M4A1_Outo
+  m_Name: Glock
   m_EditorClassIdentifier: 
-  weaponName: Rifle Outo
+  weaponName: Pistol
   currentMountedAttachments: []
-  playerWeaponPrefab: {fileID: 3422012258672029692, guid: fe35cce475e40d5429284b6f753a0b83,
+  playerWeaponPrefab: {fileID: 2738520558268228719, guid: 78816cf90f350ac4182ce50d199d5509,
     type: 3}
-  ProjectileConfig: {fileID: 0}
-  damage: 24
-  armorPenetrationRate: 75
-  fireRate: 340
-  fireRange: 144
-  slightOfHandTime: 0.874
+  ProjectileConfig: {fileID: 11400000, guid: 26275c67a3fd8734595c308ee50c749f, type: 2}
+  damage: 13
+  armorPenetrationRate: 18
+  fireRate: 150
+  fireRange: 115
+  slightOfHandTime: 0.529

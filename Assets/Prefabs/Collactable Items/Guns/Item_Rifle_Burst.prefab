@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3751300291443975990}
   - component: {fileID: 8053917589492142577}
   - component: {fileID: 391788502990602717}
-  - component: {fileID: 4846870886793981200}
   - component: {fileID: -2249791694042537195}
+  - component: {fileID: 1222109293055590051}
   m_Layer: 0
   m_Name: Item_Rifle_Burst
   m_TagString: Untagged
@@ -85,21 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4846870886793981200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3519380372418690484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe1fbb0256a4a6f89fb97c307872402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  name: M4A1 B
-  _weaponConfig: {fileID: 11400000, guid: 456a8d97ca4c6f34ca02f4e1e5ae2dd0, type: 2}
 --- !u!135 &-2249791694042537195
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +106,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.6
   m_Center: {x: 0.097256735, y: -0.05297709, z: -0.00017293362}
+--- !u!114 &1222109293055590051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3519380372418690484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b52a9d4d50647afac5a4e7f74f0226a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponConfig: {fileID: 11400000, guid: 456a8d97ca4c6f34ca02f4e1e5ae2dd0, type: 2}

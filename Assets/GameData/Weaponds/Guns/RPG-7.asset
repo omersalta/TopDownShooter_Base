@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Rocket Launcher
   currentMountedAttachments: []
-  weaponPrefab: {fileID: 171527776781687000, guid: cff54109a89a7054baed13c5aed127af,
+  playerWeaponPrefab: {fileID: 171527776781687000, guid: cff54109a89a7054baed13c5aed127af,
     type: 3}
-  ProjectileConfig: {fileID: 0}
-  inventorySprite: {fileID: 0}
+  ProjectileConfig: {fileID: 11400000, guid: fb99d1bffc5b0aa41923dba415c79245, type: 2}
   damage: 98
   armorPenetrationRate: 33
   fireRate: 20

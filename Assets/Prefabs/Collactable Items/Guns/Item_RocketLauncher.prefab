@@ -175,8 +175,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1637236833871659097}
-  - component: {fileID: 660560242735470643}
   - component: {fileID: 6630045812815649879}
+  - component: {fileID: 2804076607387903900}
   m_Layer: 0
   m_Name: Item_RocketLauncher
   m_TagString: Untagged
@@ -201,21 +201,6 @@ Transform:
   - {fileID: 6628959002103324622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -13.04, y: 0, z: 25}
---- !u!114 &660560242735470643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2739183944766095156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe1fbb0256a4a6f89fb97c307872402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  name: RPG
-  _weaponConfig: {fileID: 11400000, guid: 53760594b34531b4d9620174f61c33c6, type: 2}
 --- !u!135 &6630045812815649879
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -237,3 +222,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2804076607387903900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739183944766095156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b52a9d4d50647afac5a4e7f74f0226a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponConfig: {fileID: 11400000, guid: 53760594b34531b4d9620174f61c33c6, type: 2}

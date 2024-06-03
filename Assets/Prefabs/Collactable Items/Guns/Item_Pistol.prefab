@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6216457044025048836}
   - component: {fileID: 8353096788263200620}
   - component: {fileID: 5372472974720758718}
-  - component: {fileID: 4230208813971931454}
   - component: {fileID: 2049232622425736156}
+  - component: {fileID: 8070420960708026160}
   m_Layer: 0
   m_Name: Item_Pistol
   m_TagString: Untagged
@@ -85,21 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4230208813971931454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2577132779386004303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe1fbb0256a4a6f89fb97c307872402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  name: Colt 1911
-  _weaponConfig: {fileID: 11400000, guid: 47c56a37bed39294da69e40baa912bf5, type: 2}
 --- !u!135 &2049232622425736156
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +106,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.2372719
   m_Center: {x: 0.063759066, y: -0.03272283, z: 0.0000072349762}
+--- !u!114 &8070420960708026160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2577132779386004303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b52a9d4d50647afac5a4e7f74f0226a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponConfig: {fileID: 11400000, guid: 47c56a37bed39294da69e40baa912bf5, type: 2}

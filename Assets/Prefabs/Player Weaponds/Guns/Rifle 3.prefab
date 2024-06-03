@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5035436581865485291}
   - component: {fileID: 4272628986327012195}
   - component: {fileID: 3861569157991868354}
+  - component: {fileID: -2934491806745187118}
   m_Layer: 0
   m_Name: Rifle 3
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -695774298109068085, guid: a5f56547380d3e6448e877c01e64c479, type: 3}
+--- !u!114 &-2934491806745187118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3422012258672029692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2557e621c9148df97e7ec58970bf004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventorySprite: {fileID: 0}
+  _dropSpawnPrefab: {fileID: 0}
+  subItems: []
+  _weaponConfig: {fileID: 0}

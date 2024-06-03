@@ -15,27 +15,45 @@ MonoBehaviour:
   proectileName: 7.62
   projectilePrefab: {fileID: 3668261424305038712, guid: 487321f6bf2dc36419f9e913d5b512ba,
     type: 3}
-  Velocity: 155
+  averageVelocity: 155
   moveBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.9267176
-      inSlope: 0.61096156
-      outSlope: 0.61096156
+      time: 0.00084961765
+      value: 0.40305007
+      inSlope: 0.16954239
+      outSlope: 0.16954239
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.042480882
+      outWeight: 0.063380994
+    - serializedVersion: 3
+      time: 0.39319837
+      value: 0.916045
+      inSlope: 0.9660381
+      outSlope: 0.9660381
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10072683
+    - serializedVersion: 3
+      time: 0.81412655
+      value: 0.8675965
+      inSlope: -0.8721991
+      outSlope: -0.8721991
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.061231483
+      outWeight: 0.19543456
     - serializedVersion: 3
       time: 0.99572754
       value: 0.79465026
-      inSlope: -0.15279214
-      outSlope: -0.15279214
+      inSlope: 0.04558346
+      outSlope: 0.04558346
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.04519849
+      inWeight: 0.21003455
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
