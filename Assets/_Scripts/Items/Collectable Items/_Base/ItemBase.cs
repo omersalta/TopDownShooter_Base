@@ -1,22 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _Scripts.Items.CollectableItems
 {
     public abstract class ItemBase : MonoBehaviour
     {
-        public ItemType type;
-        public string name;
+        protected ItemType _type;
+        protected string _itemName;
         //todo cursor description ext.
 
-        private const float rotateSpead = 2.3f;
-
-        private void Update()
+        protected virtual void Initialize(ItemType type, string name)
         {
-            transform.Rotate(Vector3.up * rotateSpead, Space.Self);
+            _type = type;
+            _itemName = name;
+            
         }
+        
     }
-    
-    
     
     public enum ItemType 
     {

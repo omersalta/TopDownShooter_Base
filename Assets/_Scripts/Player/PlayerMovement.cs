@@ -1,6 +1,8 @@
 ﻿using System;
 using _Scripts.Extensions;
+using _Scripts.Player.InventoryItems;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player
 {
@@ -8,14 +10,11 @@ namespace _Scripts.Player
     {
         private Rigidbody _rigidbody;
         private PlayerInput _input;
-        private Camera _mainCamera;
-        [SerializeField] private LayerMask groundMask;
-
+        
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             _input = GetComponent<PlayerInput>();
-            _mainCamera = Camera.main;
         }
 
         private void Update()
@@ -26,36 +25,15 @@ namespace _Scripts.Player
         
         private void Aim()
         {
-            //Code copied from there https://github.com/BarthaSzabolcs/Tutorial-IsometricAiming/blob/main/Assets/Scripts/Simple%20-%20CopyThis/IsometricAiming.cs
-            var (success, position) = GetMousePosition();
-            if (success)
-            {
-                // Calculate the direction
-                var direction = position - transform.position;
+            // Calculate the direction
+            Vector3 _aimVector = PlayerInput.PlayerMouseCursor - transform.position;
+            // You might want to delete this line.
+            // Ignore the height difference.
+            _aimVector.y = 0;
 
-                // You might want to delete this line.
-                // Ignore the height difference.
-                direction.y = 0;
-
-                // Make the transform look in the direction.
-                transform.forward = direction;
-            }
+            // Make the transform look in the direction.
+            transform.forward = _aimVector;
         }
-
-        private (bool success, Vector3 position) GetMousePosition()
-        {
-            var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
-            {
-                // The Raycast hit something, return with the position.
-                return (success: true, position: hitInfo.point);
-            }
-            else
-            {
-                // The Raycast did not hit anything.
-                return (success: false, position: Vector3.zero);
-            }
-        }
+        
     }
 }

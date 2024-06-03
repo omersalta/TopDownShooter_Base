@@ -1,65 +1,81 @@
-﻿using System.Collections.Generic;
-using _Scripts.Items.InventoryItems;
+﻿using System;
+using System.Collections.Generic;
+using _Scripts.Player.InventoryItems;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player
 {
-    public class PlayerInventory : MonoBehaviour
+    public class PlayerInventory : InventoryBase
     {
-        public InventoryItemBase currentHoldedItem;
-        public static readonly KeyCode[] _inventoryKeys = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
-        private Dictionary<KeyCode, InventoryItemBase> items = new();
+        public MainInventoryItemBase currentHoldedItem;
+        private Dictionary<KeyCode, MainInventoryItemBase> _items = new();
+        private List<InventoryNonUsableItemBase> _subItems = new List<InventoryNonUsableItemBase>();
 
         private void Start()
         {
-            foreach (KeyCode _key in _inventoryKeys)
-            {
-                items.Add(_key,null);
-            }
-        }
-
-        private void Update()
-        {
-            foreach (var VARIABLE in _inventoryKeys)
-            {
-                if(Input.GetKeyDown(VARIABLE)) TryTakeHand(VARIABLE);
-            }
+            FindObjectOfType<PlayerInput>().mouseDownEvent.AddListener(OnMouseDown);
+            FindObjectOfType<PlayerInput>().mouseUpEvent.AddListener(OnMouseUp);
+            FindObjectOfType<PlayerInput>().keyCode.AddListener(TryTakeHand);
             
+            foreach (KeyCode _key in  PlayerInput.inventoryKeys)
+            {
+                _items.Add(_key,null);
+            }
         }
         
         private void TryTakeHand(KeyCode key)
         {
-            if (currentHoldedItem == items[key])
+            if (currentHoldedItem == _items[key])
             {
                 Debug.Log("there is no equipment or you already hold the equipment");
                 return;
             }
             
             currentHoldedItem?.OnDownFromHand();
-            currentHoldedItem = items[key];
+            currentHoldedItem = _items[key];
             currentHoldedItem?.OnTakeInHand();
         }
         
-        public bool IsInventoryAvailable()
+        public override bool IsInventoryAvailable()
         {
-            return items.ContainsValue(null);
+            return _items.ContainsValue(null);
         }
 
-        public bool PickUp(InventoryItemBase newItem)
+        public override bool IsInventoryAvailableForNonUsable()
         {
-            foreach (KeyValuePair<KeyCode, InventoryItemBase> _item in items)
+            return true;
+        }
+
+        public override bool PickUpFromGround(MainInventoryItemBase newItem)
+        {
+            foreach (KeyValuePair<KeyCode, MainInventoryItemBase> _item in _items)
             {
                 if (_item.Value == null)
                 {
-                    items[_item.Key] = newItem;
-                    currentHoldedItem = items[_item.Key];
-                    currentHoldedItem.OnPickUpToHand();
-                    
+                    _items[_item.Key] = newItem;
+                    TryTakeHand(_item.Key);
                     return true;
                 }
             }
             Debug.Log("The item could not picked up");
             return false;
+        }
+
+        public override bool PickUpSubItem(InventoryNonUsableItemBase newItem)
+        {
+            _subItems.Add(newItem);
+            return true;
+        }
+
+        private void OnMouseDown()
+        {
+            currentHoldedItem?.MouseDown(this);
+        }
+        
+        private void OnMouseUp()
+        {
+            currentHoldedItem?.MouseUp(this);
         }
     }
 }
