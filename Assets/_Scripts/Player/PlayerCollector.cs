@@ -1,5 +1,6 @@
 ﻿using _Scripts.Items.CollectableItems;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player
 {

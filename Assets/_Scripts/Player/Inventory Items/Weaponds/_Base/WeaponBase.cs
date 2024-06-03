@@ -1,35 +1,33 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using ToolBox.Pools;
 using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player.InventoryItems
 {
     public abstract class WeaponBase : MainInventoryItemBase
     {
-        private WeaponConfigScriptableObject _defaultWeaponConfig;
-        [SerializeField] protected WeaponConfigScriptableObject _weaponConfig;
-        protected float lastShootTime;
+        [SerializeField] protected WeaponConfigScriptableObject defaultWeaponConfig;
+        [SerializeField] protected WeaponConfigScriptableObject weaponConfig;
         
-        public void InitializeWeapon(WeaponConfigScriptableObject weaponConfig)
+        public virtual void InitializeWeapon(WeaponConfigScriptableObject weaponConfig)
         {
-            _defaultWeaponConfig = weaponConfig;
-            _weaponConfig = _defaultWeaponConfig;
-            foreach (AttachmentBase _attachment in _weaponConfig.currentMountedAttachments)
+            defaultWeaponConfig = weaponConfig;
+            this.weaponConfig = Instantiate(weaponConfig);
+            foreach (AttachmentBase attachment in this.weaponConfig.CurrentMountedAttachments)
             {
                
             }
-            
-        }
-
-        public override void Use(InventoryBase user)
-        {
-            lastShootTime = lastShootTime = Time.time;
+            reuseCooldownValueInSeconds = 60 / this.weaponConfig.FireRate;
+            lastUseTime = Time.time + this.weaponConfig.SlightOfHandTime;
         }
 
         public virtual GameObject GetProjectileFromPool()
         {
-            return _weaponConfig.ProjectileConfig.projectilePrefab.Reuse(transform.position,quaternion.identity);
+            return weaponConfig.ProjectileConfig.ProjectilePrefab.Reuse(transform.position,quaternion.identity);
         }
         
         protected virtual Vector3 GetAimPosition()
@@ -37,35 +35,39 @@ namespace _Scripts.Player.InventoryItems
             return PlayerInput.PlayerMouseCursor;
         }
         
-        public virtual bool isAvailableForAttachment(AttachmentType type){
-            bool contains = _weaponConfig.currentMountedAttachments.Any(_pair => _pair._attacmentConfig.type == type);
-            return !contains;
+        public virtual bool IsAvailableForAttachment(AttachmentType type){
+            //bool contains = WeaponConfig.currentMountedAttachments.Any(pair => pair.AttacmentConfig.type == type);
+            //return !contains;
+            return true;
         }
         
-        public virtual void AddAttachment(AttacmentConfigScriptableObject attacmentConfig)
+        public virtual void AddAttachment(AttachmentBase attacment)
         {
-            _weaponConfig.damage = _defaultWeaponConfig.damage * ((100f + attacmentConfig.damagePercentage)/100);
-            _weaponConfig.armorPenetrationRate = _defaultWeaponConfig.armorPenetrationRate * ((100f + attacmentConfig.armorPenetrationRatePercentage)/100);
-            _weaponConfig.fireRate = _defaultWeaponConfig.fireRate * ((100f + attacmentConfig.fireRatePercentage)/100);
-            _weaponConfig.fireRange = _defaultWeaponConfig.fireRange * ((100f + attacmentConfig.fireRangePercentage)/100);
-            _weaponConfig.slightOfHandTime = _defaultWeaponConfig.slightOfHandTime * (attacmentConfig.slightOfHandTimePercentage/100f);
+            AttacmentConfigScriptableObject config = attacment.AttacmentConfig;
+            
+            weaponConfig.Damage = defaultWeaponConfig.Damage * ((100f + config.DamagePercentage)/100);
+            weaponConfig.ArmorPenetrationRate = defaultWeaponConfig.ArmorPenetrationRate * ((100f + config.ArmorPenetrationRatePercentage)/100);
+            weaponConfig.FireRate = defaultWeaponConfig.FireRate * ((100f + config.FireRatePercentage)/100);
+            weaponConfig.FireRange = defaultWeaponConfig.FireRange * ((100f + config.FireRangePercentage)/100);
+            weaponConfig.SlightOfHandTime = defaultWeaponConfig.SlightOfHandTime * (config.SlightOfHandTimePercentage/100f);
+            weaponConfig.CurrentMountedAttachments.Add(attacment);
         }
         
         public override void OnTakeInHand()
         {
-            lastShootTime = Time.time + _weaponConfig.slightOfHandTime;
+            lastUseTime = Time.time + weaponConfig.SlightOfHandTime;
             base.OnTakeInHand();
         }
         
         public override void Drop(Vector3 dropPosition)
         {
-            foreach (AttachmentBase _attachment in  _weaponConfig.currentMountedAttachments)
+            foreach (AttachmentBase attachment in  weaponConfig.CurrentMountedAttachments)
             {
-                _attachment.Drop(dropPosition);
+                attachment.Drop(dropPosition);
                 dropPosition += dropOffset;
             }
            
-            _weaponConfig = _defaultWeaponConfig;
+            weaponConfig = null;
             base.Drop(dropPosition);
         }
     }

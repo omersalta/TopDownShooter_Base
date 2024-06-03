@@ -1,19 +1,21 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        public static readonly KeyCode[] inventoryKeys = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
+        public static readonly KeyCode[] InventoryKeys = {UnityEngine.KeyCode.Alpha1, UnityEngine.KeyCode.Alpha2, UnityEngine.KeyCode.Alpha3, UnityEngine.KeyCode.Alpha4, UnityEngine.KeyCode.Alpha5};
         
         public static Vector3 PlayerMouseCursor;
-        public float SpeedX, SpeedY;
-        public UnityEvent mouseDownEvent; public UnityEvent mouseUpEvent; public UnityEvent<KeyCode> keyCode ;
+        public float SpeedX;
+        public float SpeedY;
+        public UnityEvent MouseDownEvent; public UnityEvent MouseUpEvent; public UnityEvent<KeyCode> KeyCode ;
         
         
         private Camera _mainCamera;
-        [SerializeField] private LayerMask groundMask;
+        [SerializeField] private LayerMask _groundMask;
         
         private void SetMouseCursor()
         {
@@ -29,7 +31,7 @@ namespace _Scripts.Player
         {
             var ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundMask))
+            if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
             {
                 // The Raycast hit something, return with the position.
                 return (success: true, position: hitInfo.point);
@@ -60,15 +62,15 @@ namespace _Scripts.Player
             //Fire
             if (Input.GetMouseButtonDown(0))
             {
-                mouseDownEvent.Invoke();
+                MouseDownEvent.Invoke();
             }else if (Input.GetMouseButtonUp(0)) {
-                mouseUpEvent.Invoke();
+                MouseUpEvent.Invoke();
             }
             
             //inventory
-            foreach (KeyCode _key in inventoryKeys)
+            foreach (KeyCode key in InventoryKeys)
             {
-                if(Input.GetKeyDown(_key)) keyCode.Invoke(_key);
+                if(Input.GetKeyDown(key)) KeyCode.Invoke(key);
             }
             
         }

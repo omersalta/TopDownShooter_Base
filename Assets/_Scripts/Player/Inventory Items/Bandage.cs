@@ -1,12 +1,13 @@
 ﻿
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player.InventoryItems
 {
     public class Bandage : MainInventoryItemBase
     {
         [Range(1,100)]
-        [SerializeField] private float healthAmount;
+        [SerializeField] private float _healthAmount;
         
         public override void OnPickUpFromGround()
         {
@@ -22,10 +23,6 @@ namespace _Scripts.Player.InventoryItems
         {
             throw new System.NotImplementedException();
         }
-
-        public override void Use(InventoryBase user)
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

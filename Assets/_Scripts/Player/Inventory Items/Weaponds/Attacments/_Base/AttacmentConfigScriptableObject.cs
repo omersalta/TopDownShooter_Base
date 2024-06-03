@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Player.InventoryItems
 {
@@ -8,18 +9,18 @@ namespace _Scripts.Player.InventoryItems
     public class AttacmentConfigScriptableObject : ScriptableObject
     {
         public InventorySubItemBaseData AttachmentData; //how looks shoots on game
-        public AttachmentType type; //how looks gun on game (in player hand)
+        public AttachmentType Type; //how looks gun on game (in player hand)
         
         [Range(-99.9f,200f)]
-        public float damagePercentage;
+        public float DamagePercentage;
         [Range(-99.9f,200f)]
-        public float armorPenetrationRatePercentage;
+        public float ArmorPenetrationRatePercentage;
         [Range(-99.9f,100f)]
-        public float fireRatePercentage;
+        public float FireRatePercentage;
         [Range(-99.9f,300f)]
-        public float fireRangePercentage;
+        public float FireRangePercentage;
         [Range(-99.9f,200f)]
-        public float slightOfHandTimePercentage; //if this value is 100, it takes double time
+        public float SlightOfHandTimePercentage; //if this value is 100, it takes double time
         
         
     }

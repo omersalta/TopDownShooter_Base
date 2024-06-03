@@ -6,7 +6,6 @@ namespace _Scripts.Extensions
 {
     public static class Utils
     {
-        
         public static void Wait (this MonoBehaviour mono, float delay, UnityAction action) {
             mono.StartCoroutine (ExecuteAction (delay, action)) ;
         }

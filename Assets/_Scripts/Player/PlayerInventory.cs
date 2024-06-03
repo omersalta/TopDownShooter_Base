@@ -8,33 +8,33 @@ namespace _Scripts.Player
 {
     public class PlayerInventory : InventoryBase
     {
-        public MainInventoryItemBase currentHoldedItem;
+        public MainInventoryItemBase CurrentHoldedItem;
         private Dictionary<KeyCode, MainInventoryItemBase> _items = new();
         private List<InventoryNonUsableItemBase> _subItems = new List<InventoryNonUsableItemBase>();
 
         private void Start()
         {
-            FindObjectOfType<PlayerInput>().mouseDownEvent.AddListener(OnMouseDown);
-            FindObjectOfType<PlayerInput>().mouseUpEvent.AddListener(OnMouseUp);
-            FindObjectOfType<PlayerInput>().keyCode.AddListener(TryTakeHand);
+            FindObjectOfType<PlayerInput>().MouseDownEvent.AddListener(OnMouseDown);
+            FindObjectOfType<PlayerInput>().MouseUpEvent.AddListener(OnMouseUp);
+            FindObjectOfType<PlayerInput>().KeyCode.AddListener(TryTakeHand);
             
-            foreach (KeyCode _key in  PlayerInput.inventoryKeys)
+            foreach (KeyCode key in  PlayerInput.InventoryKeys)
             {
-                _items.Add(_key,null);
+                _items.Add(key,null);
             }
         }
         
         private void TryTakeHand(KeyCode key)
         {
-            if (currentHoldedItem == _items[key])
+            if (CurrentHoldedItem == _items[key])
             {
                 Debug.Log("there is no equipment or you already hold the equipment");
                 return;
             }
             
-            currentHoldedItem?.OnDownFromHand();
-            currentHoldedItem = _items[key];
-            currentHoldedItem?.OnTakeInHand();
+            CurrentHoldedItem?.OnDownFromHand();
+            CurrentHoldedItem = _items[key];
+            CurrentHoldedItem?.OnTakeInHand();
         }
         
         public override bool IsInventoryAvailable()
@@ -49,12 +49,12 @@ namespace _Scripts.Player
 
         public override bool PickUpFromGround(MainInventoryItemBase newItem)
         {
-            foreach (KeyValuePair<KeyCode, MainInventoryItemBase> _item in _items)
+            foreach (KeyValuePair<KeyCode, MainInventoryItemBase> item in _items)
             {
-                if (_item.Value == null)
+                if (item.Value == null)
                 {
-                    _items[_item.Key] = newItem;
-                    TryTakeHand(_item.Key);
+                    _items[item.Key] = newItem;
+                    TryTakeHand(item.Key);
                     return true;
                 }
             }
@@ -70,12 +70,12 @@ namespace _Scripts.Player
 
         private void OnMouseDown()
         {
-            currentHoldedItem?.MouseDown(this);
+            CurrentHoldedItem?.MouseDown(this);
         }
         
         private void OnMouseUp()
         {
-            currentHoldedItem?.MouseUp(this);
+            CurrentHoldedItem?.MouseUp(this);
         }
     }
 }

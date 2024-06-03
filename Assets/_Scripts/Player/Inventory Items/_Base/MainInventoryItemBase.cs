@@ -10,7 +10,8 @@ namespace _Scripts.Player.InventoryItems
     public abstract class MainInventoryItemBase : InventoryNonUsableItemBase
     {
         
-        protected float reuseCooldownValueInAeconds;
+        protected float reuseCooldownValueInSeconds;
+        protected float lastUseTime;
         private bool _isReadyClickToggle = true;
         
         public void InitializeMainInventoryItem(List<InventorySubItemBaseData> subItemDatas, float cooldownSec, Sprite inventorySprite,
@@ -31,7 +32,7 @@ namespace _Scripts.Player.InventoryItems
         
         public virtual void MouseDown(InventoryBase user)
         {
-            if (_isReadyClickToggle)
+            if (_isReadyClickToggle && lastUseTime + reuseCooldownValueInSeconds <= Time.time)
             {
                 _isReadyClickToggle = !_isReadyClickToggle;
                 Use(user);
@@ -43,7 +44,10 @@ namespace _Scripts.Player.InventoryItems
             _isReadyClickToggle = true;
         }
 
-        public abstract void Use(InventoryBase user);
+        public virtual void Use(InventoryBase user)
+        {
+            lastUseTime = Time.time;
+        }
     }
     
 }

@@ -26,13 +26,13 @@ namespace _Scripts.Player
         private void Aim()
         {
             // Calculate the direction
-            Vector3 _aimVector = PlayerInput.PlayerMouseCursor - transform.position;
+            Vector3 aimVector = PlayerInput.PlayerMouseCursor - transform.position;
             // You might want to delete this line.
             // Ignore the height difference.
-            _aimVector.y = 0;
+            aimVector.y = 0;
 
             // Make the transform look in the direction.
-            transform.forward = _aimVector;
+            transform.forward = aimVector;
         }
         
     }

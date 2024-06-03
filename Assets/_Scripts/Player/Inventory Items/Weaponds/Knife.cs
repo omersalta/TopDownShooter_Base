@@ -6,11 +6,6 @@ namespace _Scripts.Player.InventoryItems
     public class Knife : WeaponBase
     {
         
-        public override void Use(InventoryBase user)
-        {
-            
-        }
-
         public override void OnPickUpFromGround()
         {
             //nothing
@@ -22,7 +17,7 @@ namespace _Scripts.Player.InventoryItems
             
         }
         
-        public override bool isAvailableForAttachment(AttachmentType type)
+        public override bool IsAvailableForAttachment(AttachmentType type)
         {
             Debug.Log("knife can not use attachment");
             return false;

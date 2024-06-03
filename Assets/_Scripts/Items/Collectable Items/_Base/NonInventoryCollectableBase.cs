@@ -4,9 +4,9 @@ namespace _Scripts.Items.CollectableItems
 {
     public abstract class NonInventoryCollectableBase : CollactableBase
     {
-        protected override void Initialize(ItemType type, string name)
+        protected override void Initialize(ItemType type, string itemName)
         {
-            base.Initialize(type, name);
+            base.Initialize(type, itemName);
         }
     }
 }

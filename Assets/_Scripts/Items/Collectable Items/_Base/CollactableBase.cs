@@ -6,22 +6,22 @@ namespace _Scripts.Items.CollectableItems
 {
     public abstract class CollactableBase : ItemBase,ICollectable
     {
-        private const float rotateSpead = 2.3f;
-        public abstract void TryCollect(CollectorBase _collector);
+        private const float RotateSpead = 2.3f;
+        public abstract void TryCollect(CollectorBase collector);
 
         protected virtual void OnCollect()
         {
             gameObject.SetActive(false);
         }
         
-        protected override void Initialize(ItemType type, string name)
+        protected override void Initialize(ItemType type, string itemName)
         {
-            base.Initialize(type,name);
+            base.Initialize(type,itemName);
         }
         
         private void Update()
         {
-            transform.Rotate(Vector3.up * rotateSpead, Space.Self);
+            transform.Rotate(Vector3.up * RotateSpead, Space.Self);
         }
     }
 }

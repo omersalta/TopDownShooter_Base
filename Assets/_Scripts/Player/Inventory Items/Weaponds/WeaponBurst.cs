@@ -1,12 +1,20 @@
 ﻿using _Scripts.Extensions;
+using _Scripts.Items.CollectableItems;
 using UnityEngine;
 
 namespace _Scripts.Player.InventoryItems
 {
     public class WeaponBurst : WeaponBase
     {
-        protected readonly float delayBetweenBurstBullets = 0.04f;
-        
+        protected const float DelayBetweenBurstBullets = 0.04f;
+
+        public override void InitializeWeapon(WeaponConfigScriptableObject weaponConfig)
+        {
+            WeaponConfigScriptableObject weaponConfiguration = Instantiate(weaponConfig);
+            weaponConfiguration.FireRate /= 3f;
+            base.InitializeWeapon(weaponConfiguration);
+        }
+
         public override void OnPickUpFromGround()
         {
             throw new System.NotImplementedException();
@@ -37,7 +45,7 @@ namespace _Scripts.Player.InventoryItems
             bullet1.transform.forward = direction;
             bullet1.GetComponent<ProjectileBase>().Setup(bullet1.transform.forward,2.5f);
             /////////////////////BULLET^^^^^^^^^2///////////////////////
-            Utils.Wait(this, delayBetweenBurstBullets, () =>
+            Utils.Wait(this, DelayBetweenBurstBullets, () =>
             {
                 //repositioning because player moving
                 bullet2.SetActive(true);
@@ -46,7 +54,7 @@ namespace _Scripts.Player.InventoryItems
                 bullet2.transform.forward = direction;
                 bullet2.GetComponent<ProjectileBase>().Setup(bullet2.transform.forward,2.5f);
                 /////////////////////BULLET^^^^^^^^^3///////////////////////
-                Utils.Wait(this, delayBetweenBurstBullets, () =>
+                Utils.Wait(this, DelayBetweenBurstBullets, () =>
                 {
                     //repositioning because player moving
                     bullet3.SetActive(true);

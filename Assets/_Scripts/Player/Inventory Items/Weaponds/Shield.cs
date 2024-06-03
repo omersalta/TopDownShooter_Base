@@ -4,11 +4,7 @@ namespace _Scripts.Player.InventoryItems
 {
     public class Shield : WeaponBase
     {
-        public override void Use(InventoryBase user)
-        {
-            
-        }
-        public override bool isAvailableForAttachment(AttachmentType type)
+        public override bool IsAvailableForAttachment(AttachmentType type)
         {
             Debug.Log("Shields cannot mount attachments");
             return false;

@@ -19,6 +19,7 @@ MonoBehaviour:
   ProjectileConfig: {fileID: 11400000, guid: 26275c67a3fd8734595c308ee50c749f, type: 2}
   damage: 13
   armorPenetrationRate: 18
-  fireRate: 150
+  fireRate: 290
   fireRange: 115
+  prejctileSpeed: 0
   slightOfHandTime: 0.529

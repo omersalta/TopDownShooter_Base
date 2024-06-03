@@ -1,19 +1,19 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Items.CollectableItems
 {
     public abstract class ItemBase : MonoBehaviour
     {
-        protected ItemType _type;
-        protected string _itemName;
+        public ItemType ItemType;
+        public string ItemName;
         //todo cursor description ext.
 
-        protected virtual void Initialize(ItemType type, string name)
+        protected virtual void Initialize(ItemType type, string itemName)
         {
-            _type = type;
-            _itemName = name;
-            
+            ItemType = type;
+            ItemName = itemName;
         }
         
     }

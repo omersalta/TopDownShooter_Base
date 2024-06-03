@@ -1,12 +1,4 @@
-﻿using System;
-using _Scripts.Extensions;
-using _Scripts.Items.CollectableItems;
-using _Scripts.Player;
-using _Scripts.Player.InventoryItems.Projectiles;
-using ToolBox.Pools;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace _Scripts.Player.InventoryItems
 {
