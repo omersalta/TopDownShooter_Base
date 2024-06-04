@@ -9,15 +9,16 @@ namespace _Scripts.Inventory_Items
     public abstract class ProjectileBase : MonoBehaviour,IPoolable
     {
         protected projectileData data;
-        protected float _moveSpeed = 0f;
         protected float _totalTime = 0f;
         protected float _currentTime;
+        private float _multiplayer;
         
         public virtual void Setup(projectileData data)
         {
             this.data = data;
             _totalTime = this.data.MaxRange / data.averageVelocity;
-            _moveSpeed = data.averageVelocity;
+            Mathf.Clamp(this.data.Integrate, 0.1f, 1f);
+            _multiplayer = 1 / data.Integrate;
             _currentTime = 0;
             Utils.Wait(this,_totalTime, () =>
             {
@@ -27,9 +28,9 @@ namespace _Scripts.Inventory_Items
 
         protected void Release()
         {
-            _moveSpeed = 0;
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
+            _multiplayer = 0;
             Utils.Wait(this,0.4f, () =>
             {
                 gameObject.Release();
@@ -39,10 +40,9 @@ namespace _Scripts.Inventory_Items
         
         protected virtual void Update()
         {
-            Debug.Log(_moveSpeed);
-            transform.position += data.ShootDirection * _moveSpeed * Time.deltaTime;
+            float speed = Math.Clamp(data.speedReferance.Evaluate(_currentTime / _totalTime), 0.00001f, 0.97f) * _multiplayer * data.averageVelocity;
+            transform.position += data.ShootDirection * speed * Time.deltaTime;
             _currentTime += Time.deltaTime;
-            //Debug.Log("_currentTime:" + _currentTime + ",   _totalTime:" + _totalTime + "------speedRef:" + data.speedReferance.Evaluate(_currentTime/_totalTime));
         }
 
         public virtual void HitAction(Collider target)

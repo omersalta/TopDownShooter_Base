@@ -22,6 +22,6 @@ MonoBehaviour:
   Damage: 31
   ArmorPenetrationRate: 20
   FireRate: 261
-  Range: 17.1
+  Range: 16
   PrejctileSpeed: 26.2
   SlightOfHandTime: 0.318

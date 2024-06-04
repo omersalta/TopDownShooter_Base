@@ -22,15 +22,16 @@ namespace _Scripts.Inventory_Items
 
     public struct projectileData
     {
-        public float Damage, ArmorPenetrationRate, MaxRange, averageVelocity;
+        public float Damage, ArmorPenetrationRate, MaxRange, averageVelocity,Integrate;
         public AnimationCurve speedReferance;
         public Vector3 ShootDirection;
 
-        public projectileData(float damage, float armorPenetrationRate, float maxRange, float averageVelocity, AnimationCurve speedReferance, Vector3 shootDirection)
+        public projectileData(float damage, float armorPenetrationRate, float maxRange, float averageVelocity, float integrate, AnimationCurve speedReferance, Vector3 shootDirection)
         {
             Damage = damage;
             ArmorPenetrationRate = armorPenetrationRate;
             MaxRange = maxRange;
+            Integrate = integrate;
             this.averageVelocity = averageVelocity;
             this.speedReferance = speedReferance;
             ShootDirection = shootDirection;

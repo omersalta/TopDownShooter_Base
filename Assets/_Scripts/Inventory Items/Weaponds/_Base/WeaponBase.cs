@@ -78,6 +78,7 @@ namespace _Scripts.Inventory_Items
                 weaponConfig.ArmorPenetrationRate,
                 weaponConfig.Range,
                 weaponConfig.PrejctileSpeed,
+                weaponConfig.ProjectileConfig.CurveIntegrate,
                 weaponConfig.ProjectileConfig.SpeedReferance,
                 Vector3.Normalize(direction));
         } 

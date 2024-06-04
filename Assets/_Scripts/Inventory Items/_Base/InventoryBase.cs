@@ -30,6 +30,7 @@ namespace _Scripts.Inventory_Items
                 if (item.Value == null)
                 {
                     items[item.Key] = newItem;
+                    newItem.transform.parent = inventorySlots[GetIndexOfSlot(item.Key)].transform;
                     TryTakeHand(item.Key);
                     return true;
                 }
@@ -66,6 +67,16 @@ namespace _Scripts.Inventory_Items
         {
             currentHoldedItem?.MouseUp(this);
         }
-        
+
+        private int GetIndexOfSlot(KeyCode key)
+        {
+            int i = 0;
+            foreach (var pair in items)
+            {
+                if (pair.Key == key) return i;
+                i++;
+            }
+            return -1;
+        }
     }
 }

@@ -7,7 +7,6 @@ namespace _Scripts.Player.InventoryItems
     {
         public override void Use(InventoryBase user)
         {
-            Debug.Log("WeaponSemiAuto... USE");
             GameObject bullet = GetProjectileFromPool();
             bullet.GetComponent<ProjectileBase>().Setup(GetProjectileData());
             base.Use(user);

@@ -11,7 +11,7 @@ namespace _Scripts.Inventory_Items
         }
         protected override void Update()
         {
-            Debug.Log("name");
+            
         }
     }
 }

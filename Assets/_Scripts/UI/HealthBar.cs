@@ -1,5 +1,6 @@
 ﻿using System;
 using _Scripts.ShootMechanic.Health_System._Base;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -24,8 +25,19 @@ namespace _Scripts.UI
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                HealthSystem.GetDirectDamage(13f);
+                HealthSystem.GetDamage(8f,0f);
             }
+
+            if (HealthEaseSlider.value != HealthSlider.value)
+            {
+                HealthEaseSlider.value = Mathf.Lerp(HealthEaseSlider.value, HealthSlider.value, lerpSpeed);
+            }
+            
+            if (ArmorEaseSlider.value != ArmorSlider.value)
+            {
+                ArmorEaseSlider.value = Mathf.Lerp(ArmorEaseSlider.value, ArmorSlider.value, lerpSpeed);
+            }
+            
         }
 
         private void SetChanges()
@@ -34,7 +46,11 @@ namespace _Scripts.UI
             ArmorSlider.maxValue = HealthSystem.MaxArmor;
             HealthSlider.value = HealthSystem.Health;
             ArmorSlider.value = HealthSystem.Armor;
-            
+
+            float healthDif = HealthEaseSlider.value - HealthSlider.value;
+            float armorDif = ArmorEaseSlider.value - ArmorSlider.value;
+            ArmorEaseSlider.DOValue(ArmorSlider.value, 0.40f+armorDif/60).SetEase(Ease.OutQuint);
+            HealthEaseSlider.DOValue(HealthSlider.value, 0.40f+healthDif/60).SetEase(Ease.OutQuint);
         }
-    }
+    }   
 }

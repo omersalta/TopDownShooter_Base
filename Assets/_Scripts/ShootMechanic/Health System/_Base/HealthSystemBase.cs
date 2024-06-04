@@ -50,8 +50,8 @@ namespace _Scripts.ShootMechanic.Health_System._Base
             if (_currentArmor < 0f) _currentArmor = 0f;
             if (armorPenRate > 100f) armorPenRate = 100f;
             
-            float armorDamage = damageAmount * (armorPenRate / 100f);
-            float healDamage = damageAmount - armorDamage;
+            float healDamage = damageAmount * (armorPenRate / 100f);
+            float armorDamage = damageAmount - healDamage;
             _currentArmor -= armorDamage;
             if (_currentArmor < 0f) healDamage -= _currentArmor;
             
