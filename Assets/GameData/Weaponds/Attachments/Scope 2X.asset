@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54481cb7c6ba4c0b81d278ab4fb99e75, type: 3}
   m_Name: Scope 2X
   m_EditorClassIdentifier: 
-  attachmentName: 2X Scope
-  type: 3
-  damagePercentage: 0
-  armorPenetrationRatePercentage: 0
-  fireRatePercentage: 0
-  fireRangePercentage: 20
-  slightOfHandTimePercentage: -1.1
+  Type: 3
+  Prefabs:
+    AttachmentOnGroundAsCollactable: {fileID: 0}
+    AttachmentOnCharacterHand: {fileID: 0}
+  DamagePercentage: 0
+  ArmorPenetrationRatePercentage: 0
+  FireRatePercentage: 0
+  FireRangePercentage: 0
+  SlightOfHandTimePercentage: 0

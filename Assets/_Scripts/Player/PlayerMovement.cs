@@ -24,7 +24,7 @@ namespace _Scripts.Player
         }
         
         private void Aim()
-        {
+            {
             // Calculate the direction
             Vector3 aimVector = PlayerInput.PlayerMouseCursor - transform.position;
             // You might want to delete this line.

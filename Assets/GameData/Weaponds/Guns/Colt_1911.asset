@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
   m_Name: Colt_1911
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  currentMountedAttachments: []
-  playerWeaponPrefab: {fileID: 2738520558268228719, guid: 78816cf90f350ac4182ce50d199d5509,
-    type: 3}
+  WeaponName: Pistol colt 1991
+  Prefabs:
+    WeaponOnGroundAsCollactable: {fileID: 2577132779386004303, guid: c6f50b7ad2a1d944daea43855ae63408,
+      type: 3}
+    WeaponOnCharacterHand: {fileID: 2738520558268228719, guid: 78816cf90f350ac4182ce50d199d5509,
+      type: 3}
   ProjectileConfig: {fileID: 11400000, guid: 26275c67a3fd8734595c308ee50c749f, type: 2}
-  damage: 11
-  armorPenetrationRate: 30
-  fireRate: 230
-  fireRange: 100
-  prejctileSpeed: 0
-  slightOfHandTime: 0.529
+  Damage: 22
+  ArmorPenetrationRate: 25
+  FireRate: 224
+  Range: 18
+  PrejctileSpeed: 22.7
+  SlightOfHandTime: 0.485

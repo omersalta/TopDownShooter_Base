@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
   m_Name: M4A1_Burst
   m_EditorClassIdentifier: 
-  weaponName: Rifle Burst
-  currentMountedAttachments: []
-  playerWeaponPrefab: {fileID: 3422012258672029692, guid: fe35cce475e40d5429284b6f753a0b83,
-    type: 3}
+  WeaponName: m4a1 burst
+  Prefabs:
+    WeaponOnGroundAsCollactable: {fileID: 3519380372418690484, guid: f8c5ae937d98c9441825ebda2bea7bd5,
+      type: 3}
+    WeaponOnCharacterHand: {fileID: 3422012258672029692, guid: fe35cce475e40d5429284b6f753a0b83,
+      type: 3}
   ProjectileConfig: {fileID: 11400000, guid: 28641d971e5354c4895e204b81aca3ad, type: 2}
-  damage: 24
-  armorPenetrationRate: 75
-  fireRate: 1349
-  fireRange: 144
-  prejctileSpeed: 0
-  slightOfHandTime: 0.874
+  Damage: 40.5
+  ArmorPenetrationRate: 30.1
+  FireRate: 663
+  Range: 22
+  PrejctileSpeed: 30.8
+  SlightOfHandTime: 0.719

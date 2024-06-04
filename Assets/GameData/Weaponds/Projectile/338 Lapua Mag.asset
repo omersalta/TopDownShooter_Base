@@ -12,31 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f734de12d74018935e26b1700c972a, type: 3}
   m_Name: 338 Lapua Mag
   m_EditorClassIdentifier: 
-  proectileName: 338 Magnum
-  projectilePrefab: {fileID: 3668261424305038712, guid: 487321f6bf2dc36419f9e913d5b512ba,
+  ProectileName: Sniper Bullet
+  ProjectilePrefab: {fileID: 3668261424305038712, guid: 487321f6bf2dc36419f9e913d5b512ba,
     type: 3}
-  Velocity: 155
-  moveBehaviour:
+  SpeedReferance:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.007367662
-      value: 0.5550278
-      inSlope: 0.68488854
-      outSlope: 0.68488854
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0
-      outWeight: 0.47576553
-    - serializedVersion: 3
-      time: 0.99744636
-      value: 0.79999924
-      inSlope: -1.612708
-      outSlope: -1.612708
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.13336658
-      outWeight: 0.33333334
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  CurveIntegrate: 0

@@ -22,8 +22,7 @@ namespace _Scripts.Items.CollectableItems
     {
         Weapon,
         Booster,
-        HealthKit,
-        Interactable,
-        WeaponAttachment,
+        Attachment,
+        UsableInventoryItem
     }
 }

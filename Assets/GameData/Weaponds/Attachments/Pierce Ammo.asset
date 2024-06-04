@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54481cb7c6ba4c0b81d278ab4fb99e75, type: 3}
   m_Name: Pierce Ammo
   m_EditorClassIdentifier: 
-  attachmentName: 5.56 Armor Piercing Rounds
-  type: 6
-  damagePercentage: 5
-  armorPenetrationRatePercentage: 50
-  fireRatePercentage: 0
-  fireRangePercentage: 0
-  slightOfHandTimePercentage: 0
+  Type: 6
+  Prefabs:
+    AttachmentOnGroundAsCollactable: {fileID: 0}
+    AttachmentOnCharacterHand: {fileID: 0}
+  DamagePercentage: 0
+  ArmorPenetrationRatePercentage: 0
+  FireRatePercentage: 0
+  FireRangePercentage: 0
+  SlightOfHandTimePercentage: 0

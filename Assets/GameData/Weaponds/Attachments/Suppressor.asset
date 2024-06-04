@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54481cb7c6ba4c0b81d278ab4fb99e75, type: 3}
   m_Name: Suppressor
   m_EditorClassIdentifier: 
-  attachmentName: Suppressor
-  type: 2
-  damagePercentage: -3
-  armorPenetrationRatePercentage: -3
-  fireRatePercentage: 0
-  fireRangePercentage: 13
-  slightOfHandTimePercentage: 15
+  Type: 2
+  Prefabs:
+    AttachmentOnGroundAsCollactable: {fileID: 2739183944766095156, guid: 01e9fa2f2e8700742b98bfca575dac14,
+      type: 3}
+    AttachmentOnCharacterHand: {fileID: 6914639499855552612, guid: 03092f378fe80ad4d95302a13aee35d8,
+      type: 3}
+  DamagePercentage: 5
+  ArmorPenetrationRatePercentage: 3
+  FireRatePercentage: 0
+  FireRangePercentage: 6
+  SlightOfHandTimePercentage: 5

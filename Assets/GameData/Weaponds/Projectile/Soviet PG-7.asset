@@ -12,40 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f734de12d74018935e26b1700c972a, type: 3}
   m_Name: Soviet PG-7
   m_EditorClassIdentifier: 
-  proectileName: Launcher
-  projectilePrefab: {fileID: 2896481456221573796, guid: b95429b880f3fb34cbf7bbf717f5f769,
+  ProectileName: Launcher
+  ProjectilePrefab: {fileID: 2896481456221573796, guid: b95429b880f3fb34cbf7bbf717f5f769,
     type: 3}
-  averageVelocity: 95
-  moveBehaviour:
+  SpeedReferance:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.36375958
-      value: 0.756046
-      inSlope: -0.51198137
-      outSlope: -0.51198137
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.11211684
-      outWeight: 0.047361135
-    - serializedVersion: 3
-      time: 0.9915185
-      value: 0.9374044
-      inSlope: -1.0977864
-      outSlope: -1.0977864
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.07222794
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  CurveIntegrate: 0

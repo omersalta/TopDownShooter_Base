@@ -1,5 +1,5 @@
-﻿using _Scripts.Player;
-using _Scripts.Player.InventoryItems;
+﻿using _Scripts.Inventory_Items;
+using _Scripts.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,14 +11,13 @@ namespace _Scripts.Items.CollectableItems
         [SerializeField] protected WeaponConfigScriptableObject weaponConfig;
         public override void TryCollect(CollectorBase collector)
         {
-            PlayerCollector playerCollector = collector.GetComponent<PlayerCollector>();
-            if(playerCollector == null) return;
+            //check if the collector has an inventory
+            InventoryBase inventory = collector.Inventory.GetComponent<InventoryBase>();
+            if(inventory == null) return;
             
-            if (playerCollector.PlayerInventory.IsInventoryAvailable())
+            if (inventory.IsInventoryAvailable())
             {
-                GameObject weapondPrefab = Instantiate(weaponConfig.PlayerWeaponPrefab, playerCollector.PlayerInventory.transform);
-                weapondPrefab.name = weaponConfig.WeaponName + " Clone";
-                //TODO multiple weapon creating ex. rocket launcher, knife, pistol
+                GameObject weapondPrefab = Instantiate(weaponConfig.Prefabs.WeaponOnCharacterHand, inventory.transform);
                 WeaponBase weapon = weapondPrefab.GetComponent<WeaponBase>();
                 if (weapon == null)
                 {
@@ -26,12 +25,10 @@ namespace _Scripts.Items.CollectableItems
                     return;
                 }
                 weapon.InitializeWeapon(weaponConfig);
-                playerCollector.PlayerInventory.PickUpFromGround(weapon);
+                inventory.PickUpFromGround(weapon);
                 
                 OnCollect();
             }
-            
         }
-        
     }
 }

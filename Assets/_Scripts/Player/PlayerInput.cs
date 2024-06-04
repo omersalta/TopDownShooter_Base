@@ -12,6 +12,7 @@ namespace _Scripts.Player
         public float SpeedX;
         public float SpeedY;
         public UnityEvent MouseDownEvent; public UnityEvent MouseUpEvent; public UnityEvent<KeyCode> KeyCode ;
+        public UnityEvent MousePressedEvent;
         
         
         private Camera _mainCamera;

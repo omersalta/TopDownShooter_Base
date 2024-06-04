@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
   m_Name: RPG-7
   m_EditorClassIdentifier: 
-  weaponName: Rocket Launcher
-  currentMountedAttachments: []
-  playerWeaponPrefab: {fileID: 171527776781687000, guid: cff54109a89a7054baed13c5aed127af,
-    type: 3}
+  WeaponName: Rocket Launcher
+  Prefabs:
+    WeaponOnGroundAsCollactable: {fileID: 2739183944766095156, guid: 46babacc140cdd54f93a2c6703d84eb6,
+      type: 3}
+    WeaponOnCharacterHand: {fileID: 171527776781687000, guid: cff54109a89a7054baed13c5aed127af,
+      type: 3}
   ProjectileConfig: {fileID: 11400000, guid: fb99d1bffc5b0aa41923dba415c79245, type: 2}
-  damage: 98
-  armorPenetrationRate: 33
-  fireRate: 20
-  fireRange: 170
-  slightOfHandTime: 1.6
+  Damage: 18.2
+  ArmorPenetrationRate: 24
+  FireRate: 20
+  Range: 26.1
+  PrejctileSpeed: 18.1
+  SlightOfHandTime: 1.2

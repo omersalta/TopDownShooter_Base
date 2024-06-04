@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54481cb7c6ba4c0b81d278ab4fb99e75, type: 3}
   m_Name: Barrel Long
   m_EditorClassIdentifier: 
-  attachmentName: Long Barrel
-  type: 1
-  damagePercentage: 40
-  armorPenetrationRatePercentage: 0
-  fireRatePercentage: -6
-  fireRangePercentage: 25
-  slightOfHandTimePercentage: 45
+  Type: 1
+  Prefabs:
+    AttachmentOnGroundAsCollactable: {fileID: 0}
+    AttachmentOnCharacterHand: {fileID: 0}
+  DamagePercentage: 0
+  ArmorPenetrationRatePercentage: 0
+  FireRatePercentage: 0
+  FireRangePercentage: 0
+  SlightOfHandTimePercentage: 0
