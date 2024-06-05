@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c893527a6564eaeb2b4fdf4c905d201, type: 3}
+  m_Name: Uzi Auto for EnemyHand
+  m_EditorClassIdentifier: 
+  WeaponName: SMG auto
+  Prefabs:
+    WeaponOnGroundAsCollactable: {fileID: 3519380372418690484, guid: f8c5ae937d98c9441825ebda2bea7bd5,
+      type: 3}
+    WeaponOnCharacterHand: {fileID: 3422012258672029692, guid: 019052b0c04521740918ca0e89efadd4,
+      type: 3}
+  ProjectileConfig: {fileID: 11400000, guid: 26275c67a3fd8734595c308ee50c749f, type: 2}
+  Damage: 25
+  ArmorPenetrationRate: 40
+  FireRate: 1426
+  Range: 25
+  PrejctileSpeed: 65
+  SlightOfHandTime: 0.1

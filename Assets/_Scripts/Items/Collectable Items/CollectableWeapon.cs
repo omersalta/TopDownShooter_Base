@@ -24,7 +24,7 @@ namespace _Scripts.Items.CollectableItems
                     Debug.Log("weapon not include base script");
                     return;
                 }
-                weapon.InitializeWeapon(weaponConfig);
+                weapon.InitializeWeapon(weaponConfig, gameObject);
                 inventory.PickUpFromGround(weapon);
                 
                 OnCollect();

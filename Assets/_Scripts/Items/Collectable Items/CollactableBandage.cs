@@ -3,7 +3,6 @@
 using _Scripts.Inventory_Items;
 using _Scripts.Player.InventoryItems;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _Scripts.Items.CollectableItems
 {
@@ -12,6 +11,8 @@ namespace _Scripts.Items.CollectableItems
         [Range(1f,100f)]
         [SerializeField] private float _healthAmount;
         [SerializeField] private GameObject _inventoryPrefab;
+        [SerializeField] private Sprite _inventorySprite;
+        [SerializeField] private float _useCooldown;
         public override void TryCollect(CollectorBase collector)
         {
             
@@ -28,9 +29,8 @@ namespace _Scripts.Items.CollectableItems
                     Debug.Log("weapon not include base script");
                     return;
                 }
-                component.InitializeBandage(_healthAmount);
-                inventory.PickUpSubItem(component);
-
+                component.InitializeBandage(_healthAmount,gameObject,_inventorySprite,_useCooldown);
+                
                 OnCollect();
             }
         }

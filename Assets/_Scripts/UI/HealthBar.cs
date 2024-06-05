@@ -1,6 +1,8 @@
 ﻿using System;
+using _Scripts.ShootMechanic.Health_System;
 using _Scripts.ShootMechanic.Health_System._Base;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,48 +11,47 @@ namespace _Scripts.UI
 {
     public class HealthBar : MonoBehaviour
     {
-        private static float lerpSpeed = 0.05f;
         public Slider HealthSlider;
         public Slider HealthEaseSlider;
         public Slider ArmorSlider;
         public Slider ArmorEaseSlider;
-        public HealthSystemBase HealthSystem;
-
-        private void Start()
+        public TextMeshProUGUI HealthText;
+        public TextMeshProUGUI ArmorText; 
+        public ShootableCharacter myCharacter;
+        
+        public virtual void Start()
         {
-            HealthSystem.OnChange.AddListener(SetChanges);
+            myCharacter.OnChange.AddListener(SetChanges);
+            HealthSlider.maxValue = myCharacter.Health();
+            HealthEaseSlider.maxValue = myCharacter.Health();
+            ArmorSlider.maxValue = myCharacter.Armor();
+            ArmorEaseSlider.maxValue = myCharacter.Armor();
+            SetChanges();
         }
 
-        private void LateUpdate()
+        public virtual void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                HealthSystem.GetDamage(8f,0f);
-            }
-
-            if (HealthEaseSlider.value != HealthSlider.value)
-            {
-                HealthEaseSlider.value = Mathf.Lerp(HealthEaseSlider.value, HealthSlider.value, lerpSpeed);
-            }
-            
-            if (ArmorEaseSlider.value != ArmorSlider.value)
-            {
-                ArmorEaseSlider.value = Mathf.Lerp(ArmorEaseSlider.value, ArmorSlider.value, lerpSpeed);
-            }
-            
+            transform.LookAt(transform.position + Camera.main.transform.forward);
         }
 
         private void SetChanges()
         {
-            HealthSlider.maxValue = HealthSystem.MaxHealth;
-            ArmorSlider.maxValue = HealthSystem.MaxArmor;
-            HealthSlider.value = HealthSystem.Health;
-            ArmorSlider.value = HealthSystem.Armor;
+            
+            HealthSlider.value = myCharacter.Health();
+            ArmorSlider.value = myCharacter.Armor();
 
             float healthDif = HealthEaseSlider.value - HealthSlider.value;
             float armorDif = ArmorEaseSlider.value - ArmorSlider.value;
-            ArmorEaseSlider.DOValue(ArmorSlider.value, 0.40f+armorDif/60).SetEase(Ease.OutQuint);
-            HealthEaseSlider.DOValue(HealthSlider.value, 0.40f+healthDif/60).SetEase(Ease.OutQuint);
+            
+            ArmorEaseSlider.DOKill();
+            float additionalTime = armorDif / 60;
+            ArmorEaseSlider.DOValue(ArmorSlider.value, 0.40f+Mathf.Clamp(additionalTime,0.1f,3f)).SetEase(Ease.OutQuint);
+            HealthEaseSlider.DOKill();
+            additionalTime = healthDif / 60;
+            HealthEaseSlider.DOValue(HealthSlider.value, 0.40f+Mathf.Clamp(additionalTime,0.1f,3f)).SetEase(Ease.OutQuint);
+           
+            HealthText.text = myCharacter.Health().ToString(String.Format("0.00"));
+            ArmorText.text = myCharacter.Armor().ToString(String.Format("0.00"));
         }
     }   
 }

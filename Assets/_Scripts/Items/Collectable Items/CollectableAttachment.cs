@@ -14,21 +14,21 @@ namespace _Scripts.Items.CollectableItems
             if(inventory == null) return;
             
             //check if the collector holding a weapon now
-            WeaponBase weapon = collector.Inventory.CurrentHoldedItem.GetComponent<WeaponBase>();
+            WeaponBase weapon = collector.Inventory.GetCurrentHoldedItem()?.GetComponent<WeaponBase>();
             if(weapon == null) return;
 
-            if (inventory.IsInventoryAvailableForNonUsable())
+            if (inventory.IsInventoryAvailableForNonUsable() && weapon.IsAvailableForAttachment(attacmentConfig.Type))
             {
-                GameObject attachmentPrefab = Instantiate(attacmentConfig.Prefabs.AttachmentOnCharacterHand, inventory.CurrentHoldedItem.transform);
+                GameObject attachmentPrefab = Instantiate(attacmentConfig.Prefabs.AttachmentOnCharacterHand, inventory.GetCurrentHoldedItem().transform);
                 AttachmentBase component = attachmentPrefab.GetComponent<AttachmentBase>();
                 if (component == null)
                 {
                     Debug.Log("weapon not include base script");
                     return;
                 }
-                component.InitializeAttachment(attacmentConfig,weapon);
-                inventory.PickUpSubItem(component);
-
+                inventory.GetCurrentHoldedItem().AddSubItem(component);
+                component.InitializeAttachment(attacmentConfig,weapon,this.gameObject,attacmentConfig.InventorySprite);
+                
                 OnCollect();
             }
         }

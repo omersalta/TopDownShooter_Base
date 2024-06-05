@@ -13,6 +13,8 @@ namespace _Scripts.Player
         public float SpeedY;
         public UnityEvent MouseDownEvent; public UnityEvent MouseUpEvent; public UnityEvent<KeyCode> KeyCode ;
         public UnityEvent MousePressedEvent;
+
+        public bool isActive = true;
         
         
         private Camera _mainCamera;
@@ -49,10 +51,17 @@ namespace _Scripts.Player
         {
             _mainCamera = Camera.main;
             SetAsDefault();
+            
         }
 
         void Update()
         {
+            if (!isActive)
+            {
+                SetAsDefault();
+                return;
+            }
+            
             //Move
             SpeedX = Input.GetAxisRaw("Horizontal");
             SpeedY = Input.GetAxisRaw("Vertical");

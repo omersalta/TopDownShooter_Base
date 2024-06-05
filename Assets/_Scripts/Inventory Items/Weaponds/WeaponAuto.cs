@@ -2,7 +2,7 @@
 using _Scripts.Inventory_Items;
 using UnityEngine;
 
-namespace _Scripts.Player.InventoryItems
+namespace _Scripts.InventoryItems
 {
     public class WeaponAuto : WeaponBase
     {
@@ -11,7 +11,14 @@ namespace _Scripts.Player.InventoryItems
         public override void Use(InventoryBase user)
         {
             GameObject bullet = GetProjectileFromPool();
-            bullet.GetComponent<ProjectileBase>().Setup(GetProjectileData());
+            bullet.GetComponent<ProjectileBase>().Setup(CreateProjectileData(user));
+            base.Use(user);
+        }
+        
+        public void UseForBot (InventoryBase user,Vector3 target)
+        {
+            GameObject bullet = GetProjectileFromPool();
+            bullet.GetComponent<ProjectileBase>().Setup(CreateProjectileDataForBot(user,target));
             base.Use(user);
         }
 

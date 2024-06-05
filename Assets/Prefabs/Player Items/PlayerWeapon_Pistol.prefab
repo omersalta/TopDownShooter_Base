@@ -121,5 +121,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemType: 0
   ItemName: Pistol
-  defaultWeaponConfig: {fileID: 11400000, guid: 681aeab4d89ff7b4b941dce13d3d83e9,
-    type: 2}
+  defaultWeaponConfig: {fileID: 0}

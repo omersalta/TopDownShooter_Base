@@ -120,5 +120,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemType: 0
-  ItemName: 
+  ItemName: Rifle Burst
   defaultWeaponConfig: {fileID: 0}

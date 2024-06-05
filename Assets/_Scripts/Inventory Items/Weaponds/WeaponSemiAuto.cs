@@ -8,7 +8,7 @@ namespace _Scripts.Player.InventoryItems
         public override void Use(InventoryBase user)
         {
             GameObject bullet = GetProjectileFromPool();
-            bullet.GetComponent<ProjectileBase>().Setup(GetProjectileData());
+            bullet.GetComponent<ProjectileBase>().Setup(CreateProjectileData(user));
             base.Use(user);
         }
         

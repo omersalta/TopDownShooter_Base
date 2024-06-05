@@ -7,8 +7,10 @@ namespace _Scripts.Inventory_Items
     {
         [SerializeField] public AttacmentConfigScriptableObject AttacmentConfig;
 
-        public virtual void InitializeAttachment(AttacmentConfigScriptableObject attacmentConfig, WeaponBase weapon)
+        public void InitializeAttachment(AttacmentConfigScriptableObject attacmentConfig, WeaponBase weapon,GameObject collectedReferance, Sprite inventorySprite)
         {
+            dropSpawnGameObject = collectedReferance;
+            this.inventorySprite = inventorySprite;
             AttacmentConfig = Instantiate(attacmentConfig);
             weapon.AddAttachment(this);
         }

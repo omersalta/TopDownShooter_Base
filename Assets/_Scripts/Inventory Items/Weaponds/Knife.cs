@@ -2,7 +2,7 @@
 using _Scripts.Inventory_Items;
 using UnityEngine;
 
-namespace _Scripts.Player.InventoryItems
+namespace _Scripts.InventoryItems
 {
     public class Knife : WeaponBase
     {
@@ -12,15 +12,14 @@ namespace _Scripts.Player.InventoryItems
             //nothing
         }
 
-        public override void Drop(Vector3 dropPosition)
+        public override void DropAndDestroy()
         {
-            Debug.Log("knife cannot dropable");
-            
+            FindObjectOfType<UIManager>().SendMessage("knife cannot dropable");
         }
         
         public override bool IsAvailableForAttachment(AttachmentType type)
         {
-            Debug.Log("knife can not use attachment");
+            FindObjectOfType<UIManager>().SendMessage("knife can not use attachment");
             return false;
         }
         

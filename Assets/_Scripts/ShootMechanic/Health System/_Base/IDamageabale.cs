@@ -2,10 +2,10 @@
 {
     public interface IDamageabale
     {
-        void Heal(float amount);
-        void ArmorUp(float amount);
-        void GetDamage(float damageAmount, float armourPenRate);
-        void GetDirectDamage(float amount);
-        void OnCharacterDead();
+        void Damage(float damageAmount, float armourPenRate);
+        void DirectDamage(float amount);
+        Team GetTeam();
+        float Health(); 
+        float Armor();
     }
 }

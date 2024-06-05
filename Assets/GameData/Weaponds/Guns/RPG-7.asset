@@ -19,9 +19,9 @@ MonoBehaviour:
     WeaponOnCharacterHand: {fileID: 171527776781687000, guid: cff54109a89a7054baed13c5aed127af,
       type: 3}
   ProjectileConfig: {fileID: 11400000, guid: fb99d1bffc5b0aa41923dba415c79245, type: 2}
-  Damage: 18.2
-  ArmorPenetrationRate: 24
-  FireRate: 20
-  Range: 26.1
-  PrejctileSpeed: 18.1
-  SlightOfHandTime: 1.2
+  Damage: 99
+  ArmorPenetrationRate: 20
+  FireRate: 35
+  Range: 40
+  PrejctileSpeed: 32
+  SlightOfHandTime: 0.992

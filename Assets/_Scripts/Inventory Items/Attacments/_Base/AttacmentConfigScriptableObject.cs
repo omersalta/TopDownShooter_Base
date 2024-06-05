@@ -10,17 +10,19 @@ namespace _Scripts.Inventory_Items
     public class AttacmentConfigScriptableObject : ScriptableObject
     {
         public AttachmentType Type; //how looks gun on game (in player hand)
+        public string AttachmentName; //how looks gun on game (in player hand)
+        public Sprite InventorySprite; //how looks gun on game (in player hand)
         
         public AttachmentPair Prefabs;
         
-        [Range(-99.9f,200f)]
-        public float DamagePercentage;
-        [Range(-99.9f,200f)]
-        public float ArmorPenetrationRatePercentage;
         [Range(-99.9f,100f)]
+        public float Damage;
+        [Range(-100f,100f)]
+        public float ArmorPenetration;
+        [Range(-90f,100f)]
         public float FireRatePercentage;
-        [Range(-99.9f,300f)]
-        public float FireRangePercentage;
+        [Range(-90f,200f)]
+        public float FireRange;
         [Range(-99.9f,200f)]
         public float SlightOfHandTimePercentage; //if this value is 100, it takes double time
         

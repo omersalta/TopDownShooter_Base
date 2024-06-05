@@ -5,34 +5,24 @@ namespace _Scripts.Inventory_Items
 {
     public abstract class InventoryNonUsableItemBase : ItemBase,IDropable
     { 
-        protected readonly Vector3 dropOffset = new Vector3(3f, 1f, 0);
-        
         protected Sprite inventorySprite;
-        protected GameObject dropSpawnPrefab;
+        protected GameObject dropSpawnGameObject;
         
         public abstract void OnPickUpFromGround();
         public abstract void OnDownFromHand();
         
         public abstract void OnTakeInHand();
         
-        public virtual void Drop(Vector3 dropPosition)
+        public virtual void DropAndDestroy()
         {
-            dropSpawnPrefab.SetActive(true);
-            dropSpawnPrefab.transform.position = dropPosition;
+            dropSpawnGameObject.SetActive(true);
             Destroy(gameObject);
-        }
-        
-        public void InitializeInventorySubItem (InventorySubItemBaseData data)
-        {
-            base.Initialize(data.Type,data.Name);
-            dropSpawnPrefab = data.DropSpawnPrefab;
-            inventorySprite = data.InventorySprite;
         }
     }
 
     
     
-    [System.Serializable]
+    /*[System.Serializable]
     public struct InventorySubItemBaseData
     {
         public Sprite InventorySprite;
@@ -47,5 +37,5 @@ namespace _Scripts.Inventory_Items
             DropSpawnPrefab = dropPrefab;
             InventorySprite = sprite;
         }
-    }
+    }*/
 }

@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Grip Quick
   m_EditorClassIdentifier: 
   Type: 4
+  AttachmentName: Grip Quick
   Prefabs:
-    AttachmentOnGroundAsCollactable: {fileID: 0}
-    AttachmentOnCharacterHand: {fileID: 0}
+    AttachmentOnGroundAsCollactable: {fileID: 2346420339405534452, guid: e746ae0f3eda7ec43bd521a524226218,
+      type: 3}
+    AttachmentOnCharacterHand: {fileID: 4735526234633567335, guid: d4412da634aca404bb0ecb6a2e41a0d6,
+      type: 3}
   DamagePercentage: 0
   ArmorPenetrationRatePercentage: 0
   FireRatePercentage: 0
   FireRangePercentage: 0
-  SlightOfHandTimePercentage: 0
+  SlightOfHandTimePercentage: -79.2

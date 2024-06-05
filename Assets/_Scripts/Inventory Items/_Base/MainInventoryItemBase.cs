@@ -9,18 +9,14 @@ namespace _Scripts.Inventory_Items
 {
     public abstract class MainInventoryItemBase : InventoryNonUsableItemBase
     {
-        protected List<InventoryNonUsableItemBase> mySubItems;
+        private List<InventoryNonUsableItemBase> _mySubItems = new List<InventoryNonUsableItemBase>();
         protected float reuseCooldownValueInSeconds;
         protected float lastUseTime;
         private bool _isReadyClickToggle = true;
-        
-        public void InitializeMainInventoryItem(List<InventorySubItemBaseData> subItemDatas, float cooldownSec, Sprite inventorySprite,
-            GameObject dropSpawnPrefab, ItemType type, string name)
+
+        public void AddSubItem(InventoryNonUsableItemBase subItem)
         {
-            foreach (var VARIABLE in subItemDatas)
-            {
-                //mySubItems.Add(va);
-            }
+            _mySubItems.Add(subItem);
         }
         
         public override void OnDownFromHand()
@@ -41,8 +37,21 @@ namespace _Scripts.Inventory_Items
                 Use(user);
             }
         }
-        
 
+        public override void DropAndDestroy()
+        {
+            //FindObjectOfType<UIManager>().Set(null);
+            if (_mySubItems.Count > 0)
+            {
+                foreach (var item in _mySubItems)
+                {
+                    item?.DropAndDestroy();
+                }
+            }
+            base.DropAndDestroy();
+            
+        }
+        
         public virtual void MouseUp(InventoryBase user)
         {
             _isReadyClickToggle = true;

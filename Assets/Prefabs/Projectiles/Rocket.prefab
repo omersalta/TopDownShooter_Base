@@ -111,6 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61e6fb343df4fb7a3c64abc9575354e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _impactArea: 8
+  _triggerArea: 3.6
+  _explosionCooldown: 0.7
+  _explosionParticule: {fileID: 1000012882023006, guid: 931be8ff1fc2c6f41a6c30e1f442bf48,
+    type: 3}
 --- !u!135 &5831242959884240905
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -126,11 +131,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 11.97
   m_Center: {x: 0.78106904, y: -0.00000008195639, z: 0.00000023841864}
 --- !u!96 &-3853875222964817901
 TrailRenderer:

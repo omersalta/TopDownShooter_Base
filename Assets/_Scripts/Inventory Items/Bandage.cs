@@ -8,9 +8,13 @@ namespace _Scripts.Player.InventoryItems
     {
         private float _healthAmount;
         
-        public virtual void InitializeBandage(float healthAmount)
+        public virtual void InitializeBandage(float healthAmount,GameObject dropReferance,Sprite inventorySprite, float reuseCooldown)
         {
+            reuseCooldownValueInSeconds = reuseCooldown;
             _healthAmount = healthAmount;
+            dropSpawnGameObject = dropReferance;
+            this.inventorySprite = inventorySprite;
+            
         }
         
         public override void OnPickUpFromGround()
@@ -31,7 +35,7 @@ namespace _Scripts.Player.InventoryItems
 
         public override void Use(InventoryBase user)
         {
-            HealthSystemBase healthSystem = user.GetComponent<HealthSystemBase>();
+            HealthSystem healthSystem = user.GetComponent<HealthSystem>();
             if(healthSystem == null) return;
             
             healthSystem.Heal(_healthAmount);

@@ -14,11 +14,6 @@ namespace _Scripts.Items.CollectableItems
             gameObject.SetActive(false);
         }
         
-        protected override void Initialize(ItemType type, string itemName)
-        {
-            base.Initialize(type,itemName);
-        }
-        
         private void Update()
         {
             transform.Rotate(Vector3.up * RotateSpead, Space.Self);

@@ -20,9 +20,9 @@ namespace _Scripts.Inventory_Items
         public float ArmorPenetrationRate; //armor penetration value
         [Range(20f,1500f)]
         public float FireRate; //fire per minute
-        [Range(2f,50f)]
+        [Range(2f,70f)]
         public float Range; //maximum projectile range distance it can reach
-        [Range(15f,200f)]
+        [Range(20f,75f)]
         public float PrejctileSpeed; //maximum projectile range distance it can reach
         [Range(0.1f,2f)]
         public float SlightOfHandTime; //the waiting time required to use the equipment once you take it in your hands

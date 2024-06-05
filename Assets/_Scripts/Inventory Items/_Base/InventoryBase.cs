@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.ShootMechanic.Health_System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -9,18 +10,32 @@ namespace _Scripts.Inventory_Items
     {
         [SerializeField] protected List<GameObject> inventorySlots;
         protected MainInventoryItemBase currentHoldedItem;
-        public MainInventoryItemBase CurrentHoldedItem => currentHoldedItem;
+        public MainInventoryItemBase GetCurrentHoldedItem() => currentHoldedItem;
         protected Dictionary<KeyCode, MainInventoryItemBase> items = new();
-        protected List<InventoryNonUsableItemBase> subItems = new List<InventoryNonUsableItemBase>();
+        
         public abstract bool IsInventoryAvailable();
         public abstract bool IsInventoryAvailableForNonUsable();
-
-        protected virtual void Start()
+        protected Team _myTeam;
+        
+        public virtual void RemoveFromInventory(MainInventoryItemBase removeItem)
         {
-            for (int i = 0; i < inventorySlots.Count; i++)
+            if(removeItem == null) return;
+            KeyCode removeKey;
+            removeKey = KeyCode.Backspace;
+            foreach (KeyValuePair<KeyCode, MainInventoryItemBase> item in items)
             {
-                items.Add(KeyCode.Alpha1+i,null);
+                if (item.Value == removeItem)
+                {
+                    removeKey = item.Key;
+                    break;
+                }
             }
+            if (removeKey == KeyCode.Backspace)
+            {
+                Debug.Log("item cannot finded");
+                return;
+            }
+            items[removeKey] = null;
         }
 
         public virtual bool PickUpFromGround(MainInventoryItemBase newItem)
@@ -38,19 +53,16 @@ namespace _Scripts.Inventory_Items
             Debug.Log("The item could not picked up");
             return false;
         }
-
-        public virtual bool PickUpSubItem(InventoryNonUsableItemBase newItem)
-        {
-            subItems.Add(newItem);
-            return true;
-        }
         
         protected virtual void TryTakeHand(KeyCode key)
         {
-            if (currentHoldedItem == items[key])
+            if (currentHoldedItem != null)
             {
-                Debug.Log("there is no equipment or you already hold the equipment");
-                return;
+                if (currentHoldedItem == items[key])
+                {
+                    Debug.Log("there is no equipment or you already hold the equipment");
+                    return;
+                }
             }
             
             currentHoldedItem?.OnDownFromHand();
@@ -77,6 +89,11 @@ namespace _Scripts.Inventory_Items
                 i++;
             }
             return -1;
+        }
+        
+        public Team GetTeam()
+        {
+            return _myTeam;
         }
     }
 }

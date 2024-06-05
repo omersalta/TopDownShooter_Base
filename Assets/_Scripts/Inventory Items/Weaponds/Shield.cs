@@ -1,7 +1,7 @@
 ﻿using _Scripts.Inventory_Items;
 using UnityEngine;
 
-namespace _Scripts.Player.InventoryItems
+namespace _Scripts.InventoryItems
 {
     public class Shield : WeaponBase
     {
